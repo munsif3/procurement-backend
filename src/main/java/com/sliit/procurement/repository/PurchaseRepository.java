@@ -1,6 +1,6 @@
 package com.sliit.procurement.repository;
 
-import com.sliit.procurement.model.Purchase;
+import com.sliit.procurement.model.PurchaseOrder;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
  */
 
 @Repository
-public interface PurchaseRepository extends JpaRepository<Purchase,String> {
+public interface PurchaseRepository extends JpaRepository<PurchaseOrder,String> {
 
 }

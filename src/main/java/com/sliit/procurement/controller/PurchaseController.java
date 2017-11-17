@@ -1,6 +1,6 @@
 package com.sliit.procurement.controller;
 
-import com.sliit.procurement.model.Purchase;
+import com.sliit.procurement.model.PurchaseOrder;
 import com.sliit.procurement.service.PurchaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,14 +20,14 @@ public class PurchaseController
 
     @ResponseBody
     @RequestMapping(value="/purchases", method = RequestMethod.GET)
-    public List<Purchase> getAllPurchases()
+    public List<PurchaseOrder> getAllPurchases()
     {
         return purchaseService.getAllPurchase();
     }
 
     @ResponseBody
     @RequestMapping(value="/purchases/{id}", method = RequestMethod.GET)
-    public Purchase getPurchaseById(@PathVariable String id)
+    public PurchaseOrder getPurchaseById(@PathVariable String id)
     {
         return purchaseService.getPurchaseById(id);
     }
