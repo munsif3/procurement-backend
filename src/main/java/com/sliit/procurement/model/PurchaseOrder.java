@@ -12,7 +12,7 @@ import java.util.Date;
 
 @Entity
 @Table(name="purchase_order")
-public class Purchase
+public class PurchaseOrder
 {
     @Id
     @Column(name="purchaseId")
@@ -36,12 +36,12 @@ public class Purchase
     @Column(name="comments")
     private String comments;
 
-    public Purchase()
+    public PurchaseOrder()
     {
 
     }
 
-    public Purchase(String purchaseId, String requisitionId, String supplierId, String preparedBy, Date preparedDate, String status, String comments) {
+    public PurchaseOrder(String purchaseId, String requisitionId, String supplierId, String preparedBy, Date preparedDate, String status, String comments) {
         this.purchaseId = purchaseId;
         this.requisitionId = requisitionId;
         this.supplierId = supplierId;

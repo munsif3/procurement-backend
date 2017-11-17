@@ -1,6 +1,6 @@
 package com.sliit.procurement.service.Impl;
 
-import com.sliit.procurement.model.Purchase;
+import com.sliit.procurement.model.PurchaseOrder;
 import com.sliit.procurement.repository.PurchaseRepository;
 import com.sliit.procurement.service.PurchaseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,12 +19,12 @@ public class PurchaseServiceImpl implements PurchaseService
     PurchaseRepository purchaseRepository;
 
     @Override
-    public List<Purchase> getAllPurchase() {
+    public List<PurchaseOrder> getAllPurchase() {
         return purchaseRepository.findAll();
     }
 
     @Override
-    public Purchase getPurchaseById(String id) {
+    public PurchaseOrder getPurchaseById(String id) {
         return purchaseRepository.findOne(id);
     }
 

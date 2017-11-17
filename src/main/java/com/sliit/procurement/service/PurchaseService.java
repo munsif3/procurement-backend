@@ -1,6 +1,6 @@
 package com.sliit.procurement.service;
 
-import com.sliit.procurement.model.Purchase;
+import com.sliit.procurement.model.PurchaseOrder;
 
 import java.util.List;
 
@@ -9,9 +9,9 @@ import java.util.List;
  */
 public interface PurchaseService
 {
-    List<Purchase> getAllPurchase();
+    List<PurchaseOrder> getAllPurchase();
 
-    Purchase getPurchaseById(String id);
+    PurchaseOrder getPurchaseById(String id);
 
     void deletePurchase(String id);
 
