@@ -14,8 +14,8 @@ import javax.persistence.Table;
 public class Site {
 
     @Id
-    @Column(name = "siteNo")
-    private String siteNo;
+    @Column(name = "siteId")
+    private String siteId;
     @Column(name = "address")
     private String address;
 
@@ -23,17 +23,17 @@ public class Site {
     public Site() {
     }
 
-    public Site(String siteNo, String address) {
-        this.siteNo = siteNo;
+    public Site(String siteId, String address) {
+        this.siteId = siteId;
         this.address = address;
     }
 
-    public String getSiteNo() {
-        return siteNo;
+    public String getSiteId() {
+        return siteId;
     }
 
-    public void setSiteNo(String siteNo) {
-        this.siteNo = siteNo;
+    public void setSiteId(String siteId) {
+        this.siteId = siteId;
     }
 
     public String getAddress() {
@@ -47,7 +47,7 @@ public class Site {
     @Override
     public String toString() {
         return "Site {" +
-                " siteNo= '" + siteNo + '\'' +
+                " siteId= '" + siteId + '\'' +
                 ", address= '" + address + '\'' +
                 '}';
     }
