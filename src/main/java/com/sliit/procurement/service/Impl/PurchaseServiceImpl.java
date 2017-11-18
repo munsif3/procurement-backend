@@ -32,4 +32,9 @@ public class PurchaseServiceImpl implements PurchaseService
     public void deletePurchase(String id) {
         purchaseRepository.delete(id);
     }
+
+    @Override
+    public List<PurchaseOrder> getPurchaseOrderByRequisitionId(String requisitionId) {
+        return purchaseRepository.getPurchaseOrderByRequisitionId(requisitionId);
+    }
 }
