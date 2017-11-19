@@ -19,22 +19,40 @@ public class PurchaseServiceImpl implements PurchaseService
     PurchaseRepository purchaseRepository;
 
     @Override
-    public List<PurchaseOrder> getAllPurchase() {
+    public List<PurchaseOrder> getAllPurchaseOrders()
+    {
         return purchaseRepository.findAll();
     }
 
     @Override
-    public PurchaseOrder getPurchaseById(String id) {
-        return purchaseRepository.findOne(id);
+    public PurchaseOrder getPurchaseOrderById(int purchaseNo) {
+        return purchaseRepository.findOne(String.valueOf(purchaseNo));
     }
 
     @Override
-    public void deletePurchase(String id) {
-        purchaseRepository.delete(id);
+    public void deletePurchaseOrder(int purchaseNo) {
+        this.purchaseRepository.delete(String.valueOf(purchaseNo));
     }
 
     @Override
-    public List<PurchaseOrder> getPurchaseOrderByRequisitionId(String requisitionId) {
-        return purchaseRepository.getPurchaseOrderByRequisitionId(requisitionId);
+    public List<PurchaseOrder> getPurchaseOrderByRequisitionId(int requisitionId) {
+        return null;
     }
+
+    @Override
+    public PurchaseOrder getPurchaseOrderByPurchaseIdAndRequisitionId(int requisitionId,int purchaseNo) {
+        return purchaseRepository.findByRequisitionIdAndPurchaseId(requisitionId,purchaseNo);
+    }
+
+    @Override
+    public PurchaseOrder getMinimumAmountPurchaseOrder(int requisitionId) {
+        return purchaseRepository.findFirstByRequisitionIdOrderByAmount(requisitionId);
+    }
+
+    @Override
+    public void addPurchaseOrder(PurchaseOrder purchaseOrder)
+    {
+        this.purchaseRepository.save(purchaseOrder);
+    }
+
 }

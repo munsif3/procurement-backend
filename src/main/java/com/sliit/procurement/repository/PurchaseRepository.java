@@ -12,4 +12,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PurchaseRepository extends JpaRepository<PurchaseOrder,String>, PurchaseOrderRepositoryCustom {
 
+    PurchaseOrder findByRequisitionIdAndPurchaseId(int requisitionId, int purchaseNo);
+
+    PurchaseOrder findFirstByRequisitionIdOrderByAmount(int requisitionId);
 }
