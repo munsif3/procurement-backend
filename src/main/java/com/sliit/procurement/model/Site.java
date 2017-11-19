@@ -1,6 +1,5 @@
 package com.sliit.procurement.model;
 
-
 import javax.persistence.*;
 
 /**

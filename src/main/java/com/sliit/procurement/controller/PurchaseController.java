@@ -32,5 +32,9 @@ public class PurchaseController
         return purchaseService.getPurchaseById(id);
     }
 
+    @RequestMapping(value = "/purchases/req/{id}", method = RequestMethod.GET)
+    public List<PurchaseOrder> getPurchaseOrderByRequisitionId(@PathVariable String id) {
+        return purchaseService.getPurchaseOrderByRequisitionId(id);
+    }
 
 }

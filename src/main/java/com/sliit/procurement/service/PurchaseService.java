@@ -15,4 +15,6 @@ public interface PurchaseService
 
     void deletePurchase(String id);
 
+    List<PurchaseOrder> getPurchaseOrderByRequisitionId(String requisitionId);
+
 }

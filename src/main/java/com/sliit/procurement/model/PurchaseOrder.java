@@ -1,5 +1,7 @@
 package com.sliit.procurement.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -28,6 +30,7 @@ public class PurchaseOrder
     private String preparedBy;
 
     @Column(name="preparedDate")
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date preparedDate;
 
     @Column(name="status")
