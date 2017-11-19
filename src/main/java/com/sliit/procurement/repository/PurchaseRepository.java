@@ -1,6 +1,7 @@
 package com.sliit.procurement.repository;
 
 import com.sliit.procurement.model.PurchaseOrder;
+import com.sliit.procurement.repository.custom.PurchaseOrderRepositoryCustom;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -9,6 +10,6 @@ import org.springframework.stereotype.Repository;
  */
 
 @Repository
-public interface PurchaseRepository extends JpaRepository<PurchaseOrder,String> {
+public interface PurchaseRepository extends JpaRepository<PurchaseOrder,String>, PurchaseOrderRepositoryCustom {
 
 }
