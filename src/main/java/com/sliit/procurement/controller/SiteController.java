@@ -23,4 +23,28 @@ public class SiteController {
         return siteService.getAllSites();
     }
 
+    @ResponseBody
+    @RequestMapping(value = "/sites/{siteId}", method = RequestMethod.GET)
+    public Site getSiteById(@PathVariable("siteId") String siteId) {
+        return siteService.getSiteBySiteId(siteId);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/sites", method = RequestMethod.POST, consumes = "application/json")
+    public Site addSite(@RequestBody Site site) {
+        return siteService.addSite(site);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/sites", method = RequestMethod.PUT)
+    public Site updateSite(@RequestBody final Site site) {
+        return siteService.updateSite(site);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/sites/{siteId}", method = RequestMethod.DELETE)
+    public String deleteSite(@PathVariable("siteId") String siteId){
+        siteService.deleteSite(siteId);
+        return "DELETED";
+    }
 }
