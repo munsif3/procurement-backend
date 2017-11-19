@@ -17,21 +17,27 @@ import java.util.Date;
 public class PurchaseOrder
 {
     @Id
+    @Column(name="purchaseNo")
+    private int purchaseNo;
+
     @Column(name="purchaseId")
     private String purchaseId;
 
     @Column(name="requisitionId")
-    private String requisitionId;
+    private int requisitionId;
 
     @Column(name="supplierId")
-    private String supplierId;
+    private int supplierId;
 
     @Column(name="preparedBy")
-    private String preparedBy;
+    private int preparedBy;
 
     @Column(name="preparedDate")
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date preparedDate;
+
+    @Column(name="amount")
+    private Float amount;
 
     @Column(name="status")
     private String status;
@@ -44,14 +50,24 @@ public class PurchaseOrder
 
     }
 
-    public PurchaseOrder(String purchaseId, String requisitionId, String supplierId, String preparedBy, Date preparedDate, String status, String comments) {
+    public PurchaseOrder(int purchaseNo, String purchaseId, int requisitionId, int supplierId, int preparedBy, Date preparedDate, Float amount, String status, String comments) {
+        this.purchaseNo = purchaseNo;
         this.purchaseId = purchaseId;
         this.requisitionId = requisitionId;
         this.supplierId = supplierId;
         this.preparedBy = preparedBy;
         this.preparedDate = preparedDate;
+        this.amount = amount;
         this.status = status;
         this.comments = comments;
+    }
+
+    public int getPurchaseNo() {
+        return purchaseNo;
+    }
+
+    public void setPurchaseNo(int purchaseNo) {
+        this.purchaseNo = purchaseNo;
     }
 
     public String getPurchaseId() {
@@ -62,27 +78,27 @@ public class PurchaseOrder
         this.purchaseId = purchaseId;
     }
 
-    public String getRequisitionId() {
+    public int getRequisitionId() {
         return requisitionId;
     }
 
-    public void setRequisitionId(String requisitionId) {
+    public void setRequisitionId(int requisitionId) {
         this.requisitionId = requisitionId;
     }
 
-    public String getSupplierId() {
+    public int getSupplierId() {
         return supplierId;
     }
 
-    public void setSupplierId(String supplierId) {
+    public void setSupplierId(int supplierId) {
         this.supplierId = supplierId;
     }
 
-    public String getPreparedBy() {
+    public int getPreparedBy() {
         return preparedBy;
     }
 
-    public void setPreparedBy(String preparedBy) {
+    public void setPreparedBy(int preparedBy) {
         this.preparedBy = preparedBy;
     }
 
@@ -92,6 +108,14 @@ public class PurchaseOrder
 
     public void setPreparedDate(Date preparedDate) {
         this.preparedDate = preparedDate;
+    }
+
+    public Float getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Float amount) {
+        this.amount = amount;
     }
 
     public String getStatus() {

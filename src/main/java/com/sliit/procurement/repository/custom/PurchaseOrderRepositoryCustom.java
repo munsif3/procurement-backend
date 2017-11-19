@@ -10,4 +10,6 @@ import java.util.List;
 public interface PurchaseOrderRepositoryCustom
 {
     List<PurchaseOrder> getPurchaseOrderByRequisitionId(String requisitionId);
+
+    List<PurchaseOrder> getMinimumAmountPurchaseOrderByRequisitionId(String requisitionId);
 }

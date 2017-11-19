@@ -24,7 +24,16 @@ public class PurchaseOrderRepositoryImpl implements PurchaseOrderRepositoryCusto
     @Override
     public List<PurchaseOrder> getPurchaseOrderByRequisitionId(String requisitionId) {
         Query query = entityManager.createNativeQuery("SELECT p.* FROM purchase_order as p " +
-                "WHERE p.requisitionId =?", PurchaseOrder.class);
+                "WHERE p.requisitionId =? LIMIT 1", PurchaseOrder.class);
+        query.setParameter(1, requisitionId);
+
+        return query.getResultList();
+    }
+
+    @Override
+    public List<PurchaseOrder> getMinimumAmountPurchaseOrderByRequisitionId(String requisitionId) {
+        Query query = entityManager.createNativeQuery("SELECT * FROM purchase_order as p " +
+                "WHERE p.requisitionId =? ORDER BY amount ASC LIMIT 1", PurchaseOrder.class);
         query.setParameter(1, requisitionId);
 
         return query.getResultList();

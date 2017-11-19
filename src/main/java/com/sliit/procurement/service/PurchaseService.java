@@ -9,12 +9,18 @@ import java.util.List;
  */
 public interface PurchaseService
 {
-    List<PurchaseOrder> getAllPurchase();
+    List<PurchaseOrder> getAllPurchaseOrders();
 
-    PurchaseOrder getPurchaseById(String id);
+    PurchaseOrder getPurchaseOrderById(int purchaseNo);
 
-    void deletePurchase(String id);
+    void deletePurchaseOrder(int purchaseNo);
 
-    List<PurchaseOrder> getPurchaseOrderByRequisitionId(String requisitionId);
+    List<PurchaseOrder> getPurchaseOrderByRequisitionId(int requisitionId);
+
+    PurchaseOrder getPurchaseOrderByPurchaseIdAndRequisitionId(int requisitionId,int purchaseNo);
+
+    PurchaseOrder getMinimumAmountPurchaseOrder(int requisitionId);
+
+    void addPurchaseOrder(PurchaseOrder purchaseOrder);
 
 }
