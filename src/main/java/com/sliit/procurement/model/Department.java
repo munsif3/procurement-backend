@@ -12,10 +12,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "department")
-public class Department {
+public class Department implements java.io.Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "departmentNo")
@@ -28,16 +30,16 @@ public class Department {
 	private String departmentName;
 
 	@OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
-	@JsonBackReference
+	@JsonIgnore
 	private Set<Employee> employees;
 
 	public Department() {
 
 	}
 
-	public Department(String departmentId, String departmentName) {
+	public Department(String departmentName) {
 		super();
-		this.departmentId = departmentId;
+	
 		this.departmentName = departmentName;
 	}
 

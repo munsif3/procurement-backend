@@ -6,10 +6,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
+@Inheritance(strategy=InheritanceType.JOINED)
+
 @Table(name="user")
 public class User {
 	@Id
@@ -26,8 +30,7 @@ public class User {
 	private int contactNo;
 	@Column(name = "email", unique = true)
 	private String email;
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
-	private Employee employee;
+	
 	public User(){
 	}
 	
@@ -75,14 +78,5 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-	public Employee getEmployee() {
-		return employee;
-	}
-
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
-	}
-	
 	
 }

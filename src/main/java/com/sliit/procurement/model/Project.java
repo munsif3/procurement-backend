@@ -15,6 +15,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "project")
@@ -42,7 +43,7 @@ public class Project {
 	private Site site;
 
 	@OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
-	@JsonBackReference
+	@JsonIgnore
 	private Set<Employee> employees;
 
 	public Set<Employee> getEmployees() {
