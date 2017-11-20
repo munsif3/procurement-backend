@@ -7,65 +7,53 @@ import java.util.List;
  * Created by Munsif on 11/20/2017.
  */
 @Entity
-public class ItemCatalogue {
+@Table(name = "itemCategory")
+public class ItemCategory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "itemNo")
-    private int itemNo;
+    @Column(name = "categoryNo")
+    private int categoryNo;
 
-    @Column(name = "itemId")
-    private String itemId;
+    @Column(name = "categoryId")
+    private String categoryId;
 
-    @Column(name = "itemName")
-    private String itemName;
+    @Column(name = "categoryName")
+    private String categoryName;
 
-    @Column(name = "itemDescription")
-    private String itemDescription;
+    @OneToMany(mappedBy = "itemCategory")
+    private List<Item> items;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "item_catalogue_supplier", joinColumns = @JoinColumn(name = "itemNo", referencedColumnName = "itemNo"),
-            inverseJoinColumns = @JoinColumn(name = "supplierId", referencedColumnName = "supplierId"))
-    private List<Supplier> suppliers;
-
-    public ItemCatalogue() {
+    public ItemCategory() {
     }
 
-    public ItemCatalogue(String itemId, String itemName, String itemDescription) {
-        this.itemId = itemId;
-        this.itemName = itemName;
-        this.itemDescription = itemDescription;
+    public ItemCategory(String categoryId, String categoryName, String itemDescription) {
+        this.categoryId = categoryId;
+        this.categoryName = categoryName;
     }
 
-    public int getItemNo() {
-        return itemNo;
+    public int getCategoryNo() {
+        return categoryNo;
     }
 
-    public void setItemNo(int itemNo) {
-        this.itemNo = itemNo;
+    public void setCategoryNo(int categoryNo) {
+        this.categoryNo = categoryNo;
     }
 
-    public String getItemId() {
-        return itemId;
+    public String getCategoryId() {
+        return categoryId;
     }
 
-    public void setItemId(String itemId) {
-        this.itemId = itemId;
+    public void setCategoryId(String categoryId) {
+        this.categoryId = categoryId;
     }
 
-    public String getItemName() {
-        return itemName;
+    public String getCategoryName() {
+        return categoryName;
     }
 
-    public void setItemName(String itemName) {
-        this.itemName = itemName;
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
-    public String getItemDescription() {
-        return itemDescription;
-    }
-
-    public void setItemDescription(String itemDescription) {
-        this.itemDescription = itemDescription;
-    }
 }

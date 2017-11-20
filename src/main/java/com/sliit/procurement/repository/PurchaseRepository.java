@@ -9,12 +9,12 @@ import org.springframework.stereotype.Repository;
  * Created by Saranki on 11/17/2017.
  */
 
-@Repository
+//@Repository
 public interface PurchaseRepository extends JpaRepository<PurchaseOrder,String>, PurchaseOrderRepositoryCustom {
 
-    PurchaseOrder findByRequisitionIdAndPurchaseId(int requisitionId, int purchaseNo);
-
-    PurchaseOrder findFirstByRequisitionIdOrderByAmount(int requisitionId);
+//    PurchaseOrder findByRequisitionIdAndPurchaseId(int requisitionId, int purchaseNo);
+//
+//    PurchaseOrder findFirstByRequisitionIdOrderByAmount(int requisitionId);
 
 
 }
