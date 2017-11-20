@@ -1,12 +1,12 @@
 package com.sliit.procurement.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
+
 
 /**
  * Created by Saranki on 11/17/2017.
@@ -17,6 +17,7 @@ import java.util.Date;
 public class PurchaseOrder
 {
     @Id
+   // @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="purchaseNo")
     private int purchaseNo;
 
@@ -31,7 +32,19 @@ public class PurchaseOrder
 
     @Column(name="preparedBy")
     private int preparedBy;
+/*
 
+    @JsonIgnore
+    @ManyToOne(mappedBy = "requisition_order", cascade = CascadeType.ALL)
+    private RequisitionOrder requisitionOrder;
+
+    @Column(name="supplierId")
+    private int supplierId;
+
+    @JsonIgnore
+    @ManyToOne(mappedBy = "purchase_order", cascade = CascadeType.ALL)
+    private Employee employee;
+*/
     @Column(name="preparedDate")
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date preparedDate;
@@ -50,8 +63,7 @@ public class PurchaseOrder
 
     }
 
-    public PurchaseOrder(int purchaseNo, String purchaseId, int requisitionId, int supplierId, int preparedBy, Date preparedDate, Float amount, String status, String comments) {
-        this.purchaseNo = purchaseNo;
+    public PurchaseOrder(String purchaseId, int requisitionId, int supplierId, int preparedBy, Date preparedDate, Float amount, String status, String comments) {
         this.purchaseId = purchaseId;
         this.requisitionId = requisitionId;
         this.supplierId = supplierId;
@@ -78,14 +90,6 @@ public class PurchaseOrder
         this.purchaseId = purchaseId;
     }
 
-    public int getRequisitionId() {
-        return requisitionId;
-    }
-
-    public void setRequisitionId(int requisitionId) {
-        this.requisitionId = requisitionId;
-    }
-
     public int getSupplierId() {
         return supplierId;
     }
@@ -94,13 +98,6 @@ public class PurchaseOrder
         this.supplierId = supplierId;
     }
 
-    public int getPreparedBy() {
-        return preparedBy;
-    }
-
-    public void setPreparedBy(int preparedBy) {
-        this.preparedBy = preparedBy;
-    }
 
     public Date getPreparedDate() {
         return preparedDate;
@@ -118,8 +115,25 @@ public class PurchaseOrder
         this.amount = amount;
     }
 
+    public int getRequisitionId() {
+        return requisitionId;
+    }
+
+    public void setRequisitionId(int requisitionId) {
+        this.requisitionId = requisitionId;
+    }
+
+    public int getPreparedBy() {
+        return preparedBy;
+    }
+
+    public void setPreparedBy(int preparedBy) {
+        this.preparedBy = preparedBy;
+    }
+
     public String getStatus() {
         return status;
+
     }
 
     public void setStatus(String status) {
