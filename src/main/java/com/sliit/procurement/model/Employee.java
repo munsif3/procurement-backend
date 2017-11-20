@@ -9,15 +9,14 @@ import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name="employee")
-public class Employee {
+public class Employee extends User{
 
-	@Id
-	@Column(name="personNo")
-	private int personNo;
+	
 	
 	@Column(name="employeeId")
 	private String employeeId;
@@ -38,12 +37,12 @@ public class Employee {
 	
 	@ManyToOne
     @JoinColumn(name = "department_id")
-	@JsonManagedReference
+	
 	private Department department;
 	
 	@ManyToOne
     @JoinColumn(name = "projectNo")
-	@JsonManagedReference
+	
 	private Project project;
 	
 	@OneToOne(mappedBy = "employee")
@@ -53,23 +52,16 @@ public class Employee {
 		
 	}
 	
-	public Employee(int personNo, String employeeId, String designation, String userName, String password) {
+	/*public Employee(String employeeId, String designation, String userName, String password) {
 		super();
-		this.personNo = personNo;
 		this.employeeId = employeeId;
 		this.designation = designation;
 		this.userName = userName;
 		this.Password = password;
 	}
+*/
 
-
-	public int getPersonNo() {
-		return personNo;
-	}
-
-	public void setPersonNo(int personNo) {
-		this.personNo = personNo;
-	}
+	
 
 	public String getEmployeeId() {
 		return employeeId;
