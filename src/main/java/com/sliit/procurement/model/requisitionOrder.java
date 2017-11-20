@@ -2,11 +2,9 @@ package com.sliit.procurement.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by User on 20/11/2017.
@@ -39,6 +37,9 @@ public class requisitionOrder {
 
     @Column(name="comments")
     private String comments;
+
+    @OneToMany(mappedBy = "requisition_order")
+    private List<PurchaseOrder> purchaseOrder;
 
     public requisitionOrder() {
     }
