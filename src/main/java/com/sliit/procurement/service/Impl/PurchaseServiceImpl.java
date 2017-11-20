@@ -12,7 +12,7 @@ import java.util.List;
  * Created by Saranki on 11/17/2017.
  */
 
-@Service
+//@Service
 public class PurchaseServiceImpl implements PurchaseService
 {
 //    @Autowired
