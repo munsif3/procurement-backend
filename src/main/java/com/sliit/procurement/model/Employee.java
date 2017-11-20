@@ -1,16 +1,11 @@
 package com.sliit.procurement.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import java.util.List;
 
 @Entity
 @Table(name="employee")
@@ -47,6 +42,9 @@ public class Employee extends User{
 	
 	@OneToOne(mappedBy = "employee")
     private Site site;
+
+	@OneToMany(mappedBy = "employee")
+	private List<PurchaseOrder> purchaseOrders;
 	
 	public Employee(){
 		
