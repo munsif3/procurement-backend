@@ -23,6 +23,9 @@ public class Site {
     @Column(name = "address")
     private String address;
 
+    @OneToOne(mappedBy = "site")
+    private Project project;
+
     public Site() {
     }
 
