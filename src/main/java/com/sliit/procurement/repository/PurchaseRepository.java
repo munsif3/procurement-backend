@@ -15,4 +15,6 @@ public interface PurchaseRepository extends JpaRepository<PurchaseOrder,String>,
     PurchaseOrder findByRequisitionIdAndPurchaseId(int requisitionId, int purchaseNo);
 
     PurchaseOrder findFirstByRequisitionIdOrderByAmount(int requisitionId);
+
+
 }
