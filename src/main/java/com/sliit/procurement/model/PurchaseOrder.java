@@ -2,7 +2,6 @@ package com.sliit.procurement.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -17,34 +16,26 @@ import java.util.Date;
 public class PurchaseOrder
 {
     @Id
-   // @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="purchaseNo")
     private int purchaseNo;
 
     @Column(name="purchaseId")
     private String purchaseId;
 
-    @Column(name="requisitionId")
-    private int requisitionId;
-
-    @Column(name="supplierId")
-    private int supplierId;
-
-    @Column(name="preparedBy")
-    private int preparedBy;
-/*
-
     @JsonIgnore
-    @ManyToOne(mappedBy = "requisition_order", cascade = CascadeType.ALL)
-    private RequisitionOrder requisitionOrder;
+    @ManyToOne
+    @JoinColumn(name = "requisitionId")
+    private requisitionOrder requisitionOrder;
 
     @Column(name="supplierId")
     private int supplierId;
 
     @JsonIgnore
-    @ManyToOne(mappedBy = "purchase_order", cascade = CascadeType.ALL)
+    @ManyToOne
+    @JoinColumn(name = "preparedBy")
     private Employee employee;
-*/
+
     @Column(name="preparedDate")
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date preparedDate;
@@ -58,16 +49,14 @@ public class PurchaseOrder
     @Column(name="comments")
     private String comments;
 
-    public PurchaseOrder()
-    {
-
+    public PurchaseOrder() {
     }
 
-    public PurchaseOrder(String purchaseId, int requisitionId, int supplierId, int preparedBy, Date preparedDate, Float amount, String status, String comments) {
+    public PurchaseOrder(String purchaseId, com.sliit.procurement.model.requisitionOrder requisitionOrder, int supplierId, Employee employee, Date preparedDate, Float amount, String status, String comments) {
         this.purchaseId = purchaseId;
-        this.requisitionId = requisitionId;
+        this.requisitionOrder = requisitionOrder;
         this.supplierId = supplierId;
-        this.preparedBy = preparedBy;
+        this.employee = employee;
         this.preparedDate = preparedDate;
         this.amount = amount;
         this.status = status;
@@ -90,6 +79,14 @@ public class PurchaseOrder
         this.purchaseId = purchaseId;
     }
 
+    public com.sliit.procurement.model.requisitionOrder getRequisitionOrder() {
+        return requisitionOrder;
+    }
+
+    public void setRequisitionOrder(com.sliit.procurement.model.requisitionOrder requisitionOrder) {
+        this.requisitionOrder = requisitionOrder;
+    }
+
     public int getSupplierId() {
         return supplierId;
     }
@@ -98,6 +95,13 @@ public class PurchaseOrder
         this.supplierId = supplierId;
     }
 
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
 
     public Date getPreparedDate() {
         return preparedDate;
@@ -115,25 +119,8 @@ public class PurchaseOrder
         this.amount = amount;
     }
 
-    public int getRequisitionId() {
-        return requisitionId;
-    }
-
-    public void setRequisitionId(int requisitionId) {
-        this.requisitionId = requisitionId;
-    }
-
-    public int getPreparedBy() {
-        return preparedBy;
-    }
-
-    public void setPreparedBy(int preparedBy) {
-        this.preparedBy = preparedBy;
-    }
-
     public String getStatus() {
         return status;
-
     }
 
     public void setStatus(String status) {

@@ -53,4 +53,9 @@ public class PurchaseController
          purchaseService.addPurchaseOrder(purchaseOrder);
     }
 
+    @RequestMapping(value = "/purchases/delete/{purchaseNo}", method = RequestMethod.DELETE)
+    public void removePurchaseOrder(int purchaseNo)
+    {
+        purchaseService.deletePurchaseOrder(purchaseNo);
+    }
 }
