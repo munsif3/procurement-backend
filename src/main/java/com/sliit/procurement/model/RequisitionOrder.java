@@ -12,7 +12,7 @@ import java.util.List;
 
 @Entity
 @Table(name="requisition_order")
-public class requisitionOrder {
+public class RequisitionOrder {
 
     @Id
     @Column(name="requisitionNo")
@@ -38,13 +38,13 @@ public class requisitionOrder {
     @Column(name="comments")
     private String comments;
 
-    @OneToMany(mappedBy = "requisition_order")
+    @OneToMany(mappedBy = "RequisitionOrder")
     private List<PurchaseOrder> purchaseOrder;
 
-    public requisitionOrder() {
+    public RequisitionOrder() {
     }
 
-    public requisitionOrder(int requisitionNo, String requisitionId, int orderBy, Date reqOrderedDate, Date reqExpectedDate, String status, String comments) {
+    public RequisitionOrder(int requisitionNo, String requisitionId, int orderBy, Date reqOrderedDate, Date reqExpectedDate, String status, String comments) {
         this.requisitionNo = requisitionNo;
         this.requisitionId = requisitionId;
         this.orderBy = orderBy;

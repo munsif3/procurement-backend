@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 
 /**
@@ -12,7 +13,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="requisition_order_details")
-public class requisitionOrderDetails {
+public class RequisitionOrderDetails implements Serializable{
 
     @Id
     @Column(name="requisitionNo")
@@ -28,10 +29,10 @@ public class requisitionOrderDetails {
     @Column(name="quantityUnit")
     private String quantityUnit;
 
-    public requisitionOrderDetails() {
+    public RequisitionOrderDetails() {
     }
 
-    public requisitionOrderDetails(int requisitionNo, int itemId, Double quantity, String quantityUnit) {
+    public RequisitionOrderDetails(int requisitionNo, int itemId, Double quantity, String quantityUnit) {
         this.requisitionNo = requisitionNo;
         this.itemId = itemId;
         this.quantity = quantity;

@@ -25,8 +25,8 @@ public class PurchaseOrder
 
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "requisitionId")
-    private requisitionOrder requisitionOrder;
+    @JoinColumn(name = "requisitionNo")
+    private RequisitionOrder RequisitionOrder;
 
     @Column(name="supplierId")
     private int supplierId;
@@ -52,9 +52,9 @@ public class PurchaseOrder
     public PurchaseOrder() {
     }
 
-    public PurchaseOrder(String purchaseId, com.sliit.procurement.model.requisitionOrder requisitionOrder, int supplierId, Employee employee, Date preparedDate, Float amount, String status, String comments) {
+    public PurchaseOrder(String purchaseId, RequisitionOrder RequisitionOrder, int supplierId, Employee employee, Date preparedDate, Float amount, String status, String comments) {
         this.purchaseId = purchaseId;
-        this.requisitionOrder = requisitionOrder;
+        this.RequisitionOrder = RequisitionOrder;
         this.supplierId = supplierId;
         this.employee = employee;
         this.preparedDate = preparedDate;
@@ -79,12 +79,12 @@ public class PurchaseOrder
         this.purchaseId = purchaseId;
     }
 
-    public com.sliit.procurement.model.requisitionOrder getRequisitionOrder() {
-        return requisitionOrder;
+    public RequisitionOrder getRequisitionOrder() {
+        return RequisitionOrder;
     }
 
-    public void setRequisitionOrder(com.sliit.procurement.model.requisitionOrder requisitionOrder) {
-        this.requisitionOrder = requisitionOrder;
+    public void setRequisitionOrder(RequisitionOrder RequisitionOrder) {
+        this.RequisitionOrder = RequisitionOrder;
     }
 
     public int getSupplierId() {

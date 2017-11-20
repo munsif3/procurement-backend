@@ -15,47 +15,47 @@ import java.util.List;
 @CrossOrigin
 public class PurchaseController
 {
-    @Autowired
-    PurchaseService purchaseService;
-
-    @ResponseBody
-    @RequestMapping(value="/purchases", method = RequestMethod.GET)
-    public List<PurchaseOrder> getAllPurchases()
-    {
-        return purchaseService.getAllPurchaseOrders();
-    }
-
-    @ResponseBody
-    @RequestMapping(value="/purchases/{id}", method = RequestMethod.GET)
-    public PurchaseOrder getPurchaseById(@PathVariable int id)
-    {
-        return purchaseService.getPurchaseOrderById(id);
-    }
-
-    @RequestMapping(value = "/purchases/req/{id}", method = RequestMethod.GET)
-    public List<PurchaseOrder> getPurchaseOrderByRequisitionId(@PathVariable int id) {
-        return purchaseService.getPurchaseOrderByRequisitionId(id);
-    }
-
-    @RequestMapping(value = "/purchases/{requisitionId}/{purchaseId}", method = RequestMethod.GET)
-    public PurchaseOrder getPurchaseOrderByPurchaseIdAndRequisitionId(@PathVariable int requisitionId, @PathVariable int purchaseNo)
-    {
-        return purchaseService.getPurchaseOrderByPurchaseIdAndRequisitionId(requisitionId, purchaseNo);
-    }
-
-    @RequestMapping(value = "/purchases/min/{requisitionId}", method = RequestMethod.GET)
-    public PurchaseOrder getMinimumAmountPurchaseOrder(@PathVariable int requisitionId) {
-        return purchaseService.getMinimumAmountPurchaseOrder(requisitionId);
-    }
-
-    @RequestMapping(value="/purchases",method = RequestMethod.POST)
-    public void savePurchaseOrder(@RequestBody PurchaseOrder purchaseOrder) {
-         purchaseService.addPurchaseOrder(purchaseOrder);
-    }
-
-    @RequestMapping(value = "/purchases/delete/{purchaseNo}", method = RequestMethod.DELETE)
-    public void removePurchaseOrder(int purchaseNo)
-    {
-        purchaseService.deletePurchaseOrder(purchaseNo);
-    }
+//    @Autowired
+//    PurchaseService purchaseService;
+//
+//    @ResponseBody
+//    @RequestMapping(value="/purchases", method = RequestMethod.GET)
+//    public List<PurchaseOrder> getAllPurchases()
+//    {
+//        return purchaseService.getAllPurchaseOrders();
+//    }
+//
+//    @ResponseBody
+//    @RequestMapping(value="/purchases/{id}", method = RequestMethod.GET)
+//    public PurchaseOrder getPurchaseById(@PathVariable int id)
+//    {
+//        return purchaseService.getPurchaseOrderById(id);
+//    }
+//
+//    @RequestMapping(value = "/purchases/req/{id}", method = RequestMethod.GET)
+//    public List<PurchaseOrder> getPurchaseOrderByRequisitionId(@PathVariable int id) {
+//        return purchaseService.getPurchaseOrderByRequisitionId(id);
+//    }
+//
+//    @RequestMapping(value = "/purchases/{requisitionId}/{purchaseId}", method = RequestMethod.GET)
+//    public PurchaseOrder getPurchaseOrderByPurchaseIdAndRequisitionId(@PathVariable int requisitionId, @PathVariable int purchaseNo)
+//    {
+//        return purchaseService.getPurchaseOrderByPurchaseIdAndRequisitionId(requisitionId, purchaseNo);
+//    }
+//
+//    @RequestMapping(value = "/purchases/min/{requisitionId}", method = RequestMethod.GET)
+//    public PurchaseOrder getMinimumAmountPurchaseOrder(@PathVariable int requisitionId) {
+//        return purchaseService.getMinimumAmountPurchaseOrder(requisitionId);
+//    }
+//
+//    @RequestMapping(value="/purchases",method = RequestMethod.POST)
+//    public void savePurchaseOrder(@RequestBody PurchaseOrder purchaseOrder) {
+//         purchaseService.addPurchaseOrder(purchaseOrder);
+//    }
+//
+//    @RequestMapping(value = "/purchases/delete/{purchaseNo}", method = RequestMethod.DELETE)
+//    public void removePurchaseOrder(int purchaseNo)
+//    {
+//        purchaseService.deletePurchaseOrder(purchaseNo);
+//    }
 }

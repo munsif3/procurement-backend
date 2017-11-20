@@ -1,36 +1,46 @@
 package com.sliit.procurement.model;
 
 import java.sql.Date;
+import java.util.List;
+import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+
 @Entity
 @Table(name="supplier")
 public class Supplier extends User{
 
-	@Column(name="supplierId")
+    //@Column(name="supplierId")
 	private String supplierId;
-	@Column(name="companyName")
+
+    @Column(name="companyName")
 	private String companyName;
-	@Column(name="contractedDate")
+
+    @Column(name="contractedDate")
 	private Date contractedDate;
-	@Column(name="deliveryChargePercent")
+
+    @Column(name="deliveryChargePercent")
 	private Double deliveryChargePercent;
-	@Column(name="approximateDelivaryDays")
+
+    @Column(name="approximateDelivaryDays")
 	private int approximateDelivaryDays;
+
+
+    @OneToMany(mappedBy = "supplier")
+	private Set<ItemSupplier> itemSuppliers;
 	
 	public Supplier(){
 		
 	}
 	
 	public Supplier(String companyName, Date contractedDate, Double deliveryChargePercent,
-			int approximateDelivaryDays) {
+			int approximateDelivaryDays, Set<ItemSupplier> itemSuppliers) {
 		super();
 		this.companyName = companyName;
 		this.contractedDate = contractedDate;
 		this.deliveryChargePercent = deliveryChargePercent;
 		this.approximateDelivaryDays = approximateDelivaryDays;
+		this.itemSuppliers = itemSuppliers;
 	}
 
 
@@ -64,6 +74,14 @@ public class Supplier extends User{
 	public void setApproximateDelivaryDays(int approximateDelivaryDays) {
 		this.approximateDelivaryDays = approximateDelivaryDays;
 	}
-	
+
+
+    public Set<ItemSupplier> getItemSuppliers() {
+        return itemSuppliers;
+    }
+
+    public void setItemSuppliers(Set<ItemSupplier> itemSuppliers) {
+        this.itemSuppliers = itemSuppliers;
+    }
 	
 }
