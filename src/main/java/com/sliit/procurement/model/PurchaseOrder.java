@@ -127,7 +127,6 @@ public class PurchaseOrder implements Serializable {
     public void setPurchaseId(String purchaseId) {
         this.purchaseId = purchaseId;
     }
-
     public Date getRequestedDate() {
         return requestedDate;
     }
