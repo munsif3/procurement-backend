@@ -41,12 +41,12 @@ public class Site implements Serializable {
     private String siteNo;
 
     @JoinColumn(name = "personNo", referencedColumnName = "personNo")
-    @ManyToOne
+    @OneToOne
     private Employee personNo;
 
-    @OneToOne//(mappedBy = "siteNo")
-    @JoinColumn(name = "siteNo", insertable=false, updatable=false)
-    private Project project;
+//    @OneToOne//(mappedBy = "siteNo")
+//    @JoinColumn(name = "siteNo", insertable=false, updatable=false)
+//    private Project project;
 
     public Site() {
     }
@@ -95,14 +95,14 @@ public class Site implements Serializable {
         this.personNo = personNo;
     }
 
-    @XmlTransient
-    public Project getProjectList() {
-        return project;
-    }
-
-    public void setProjectList(Project projectList) {
-        this.project = projectList;
-    }
+//    @XmlTransient
+//    public Project getProjectList() {
+//        return project;
+//    }
+//
+//    public void setProjectList(Project projectList) {
+//        this.project = projectList;
+//    }
 
     @Override
     public int hashCode() {
