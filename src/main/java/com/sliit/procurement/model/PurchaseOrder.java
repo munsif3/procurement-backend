@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -28,8 +29,10 @@ public class PurchaseOrder
     @JoinColumn(name = "requisitionNo")
     private RequisitionOrder RequisitionOrder;
 
-    @Column(name="supplierId")
-    private int supplierId;
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name="supplierId")
+    private Supplier supplier;
 
     @JsonIgnore
     @ManyToOne
@@ -49,13 +52,16 @@ public class PurchaseOrder
     @Column(name="comments")
     private String comments;
 
+   /* @OneToMany(mappedBy = "purchaseOrder")
+    private List<PurchaseOrderDetails> purchaseOrderDetails;*/
+
     public PurchaseOrder() {
     }
 
-    public PurchaseOrder(String purchaseId, RequisitionOrder RequisitionOrder, int supplierId, Employee employee, Date preparedDate, Float amount, String status, String comments) {
+    public PurchaseOrder(String purchaseId, com.sliit.procurement.model.RequisitionOrder requisitionOrder, Supplier supplier, Employee employee, Date preparedDate, Float amount, String status, String comments) {
         this.purchaseId = purchaseId;
-        this.RequisitionOrder = RequisitionOrder;
-        this.supplierId = supplierId;
+        RequisitionOrder = requisitionOrder;
+        this.supplier = supplier;
         this.employee = employee;
         this.preparedDate = preparedDate;
         this.amount = amount;
@@ -79,20 +85,20 @@ public class PurchaseOrder
         this.purchaseId = purchaseId;
     }
 
-    public RequisitionOrder getRequisitionOrder() {
+    public com.sliit.procurement.model.RequisitionOrder getRequisitionOrder() {
         return RequisitionOrder;
     }
 
-    public void setRequisitionOrder(RequisitionOrder RequisitionOrder) {
-        this.RequisitionOrder = RequisitionOrder;
+    public void setRequisitionOrder(com.sliit.procurement.model.RequisitionOrder requisitionOrder) {
+        RequisitionOrder = requisitionOrder;
     }
 
-    public int getSupplierId() {
-        return supplierId;
+    public Supplier getSupplier() {
+        return supplier;
     }
 
-    public void setSupplierId(int supplierId) {
-        this.supplierId = supplierId;
+    public void setSupplier(Supplier supplier) {
+        this.supplier = supplier;
     }
 
     public Employee getEmployee() {

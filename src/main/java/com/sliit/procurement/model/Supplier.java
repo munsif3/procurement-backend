@@ -28,6 +28,9 @@ public class Supplier extends User{
 
     @OneToMany(mappedBy = "supplier")
 	private Set<ItemSupplier> itemSuppliers;
+
+    @OneToMany(mappedBy = "supplier")
+    private List<PurchaseOrder> purchaseOrders;
 	
 	public Supplier(){
 		
