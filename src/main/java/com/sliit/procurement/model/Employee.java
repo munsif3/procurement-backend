@@ -11,8 +11,6 @@ import java.util.List;
 @Table(name="employee")
 public class Employee extends User{
 
-	
-	
 	@Column(name="employeeId")
 	private String employeeId;
 	
@@ -32,20 +30,30 @@ public class Employee extends User{
 	
 	@ManyToOne
     @JoinColumn(name = "department_id")
-	
 	private Department department;
 	
 	@ManyToOne
     @JoinColumn(name = "projectNo")
-	
 	private Project project;
 	
-	@OneToOne(mappedBy = "employee")
+//	@OneToOne(mappedBy = "employee")
+//    private Site site;
+
+//	@OneToMany(mappedBy = "employee")
+//	private List<PurchaseOrder> purchaseOrders;
+
+    @OneToOne(mappedBy = "personNo")
     private Site site;
 
-	@OneToMany(mappedBy = "employee")
-	private List<PurchaseOrder> purchaseOrders;
-	
+    @OneToMany(mappedBy = "approvedBy")
+    private List<PurchaseOrder> purchaseOrderList;
+
+    @OneToMany(mappedBy = "preparedBy")
+    private List<PurchaseOrder> purchaseOrderList1;
+
+    @OneToMany(mappedBy = "requestedBy")
+    private List<PurchaseOrder> purchaseOrderList2;
+
 	public Employee(){
 		
 	}
