@@ -12,42 +12,44 @@ import java.util.List;
  * Created by Saranki on 11/17/2017.
  */
 
-//@Service
+@Service
 public class PurchaseServiceImpl implements PurchaseService
 {
-//    @Autowired
-//    PurchaseRepository purchaseRepository;
+    @Autowired
+    PurchaseRepository purchaseRepository;
+
+    /**
+     * This method is used to get all the available purchase orders without
+     * considering any filtering attributes.
+     * @return - Returns list of purchase order objects.
+     */
+    @Override
+    public List<PurchaseOrder> getAllPurchaseOrders() {
+        return purchaseRepository.findAll();
+    }
+
+    /**
+     * This method is used to add new purchase orders
+     * @param purchaseOrder - Purchase order object is passed as the parameter in order to save the
+     *                        purchase order details.
+     */
+    @Override
+    public void addPurchaseOrder(PurchaseOrder purchaseOrder)
+    {
+        this.purchaseRepository.save(purchaseOrder);
+    }
+
+    /**
+      * This method is used to get purchase order based on purchase no.
+      * @param purchaseId - Each purchase order is uniquely identified by purchase no.
+      * @return - Returns one single purchase object which has the provided purchase no.
+      */
+     @Override
+    public PurchaseOrder getPurchaseOrderById(String purchaseId) {
+        return purchaseRepository.findOne(purchaseId);
+    }
+
 //
-//    /**
-//     * This method is used to get all the available purchase orders without
-//     * considering any filtering attributes.
-//     * @return - Returns list of purchase order objects.
-//     */
-//    @Override
-//    public List<PurchaseOrder> getAllPurchaseOrders() {
-//        return purchaseRepository.findAll();
-//    }
-//
-//    /**
-//     * This method is used to get purchase order based on purchase no.
-//     * @param purchaseNo - Each purchase order is uniquely identified by purchase no.
-//     * @return - Returns one single purchase object which has the provided purchase no.
-//     */
-//    @Override
-//    public PurchaseOrder getPurchaseOrderById(int purchaseNo) {
-//        return purchaseRepository.findOne(String.valueOf(purchaseNo));
-//    }
-//
-//    /**
-//     * This method is used to add new purchase orders
-//     * @param purchaseOrder - Purchase order object is passed as the parameter in order to save the
-//     *                        purchase order details.
-//     */
-//    @Override
-//    public void addPurchaseOrder(PurchaseOrder purchaseOrder)
-//    {
-//        this.purchaseRepository.save(purchaseOrder);
-//    }
 //
 //    /**
 //     * This method is used to delete the purchase order details(purchase order object)
