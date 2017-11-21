@@ -16,18 +16,24 @@ import javax.persistence.Table;
 
 @Table(name="user")
 public class User {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="personNo")
 	private int personNo;
+
 	@Column(name = "personId", unique = true)
 	private String personId;
+
 	@Column(name = "name", unique = true)
 	private String name;
+
 	@Column(name = "NIC", unique = true)
 	private String nic;
+
 	@Column(name = "contactNo", unique = true)
 	private int contactNo;
+
 	@Column(name = "email", unique = true)
 	private String email;
 	
