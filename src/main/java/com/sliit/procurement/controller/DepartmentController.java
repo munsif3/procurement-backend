@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -43,4 +45,11 @@ public class DepartmentController {
 	     return new ResponseEntity<Department>(department,HttpStatus.CREATED);
 	 }
 	
+	@PutMapping("/department/{id}/{name}")
+	 public ResponseEntity<Department>updateDepartment(@PathVariable("id")int id,@PathVariable("name")String name) {
+		 Department department= departmentService.getById(id);
+		 department.setDepartmentName(name);
+		 department=departmentService.saveDepartment(department);
+	     return new ResponseEntity<Department>(department,HttpStatus.CREATED);
+	 }
 }

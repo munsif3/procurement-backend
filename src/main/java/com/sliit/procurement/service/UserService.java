@@ -8,4 +8,5 @@ public interface UserService {
 
 	User findById(int id);
 	List<User> findAll();
+	User addUser(User user);
 }

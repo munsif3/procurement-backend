@@ -5,4 +5,5 @@ import com.sliit.procurement.model.Department;
 public interface DepartmentService {
 	List<Department> getAll();
 	Department saveDepartment(Department department);
+	Department getById(int id);
 }
