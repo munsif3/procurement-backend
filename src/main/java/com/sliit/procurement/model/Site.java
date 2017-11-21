@@ -23,6 +23,13 @@ public class Site {
     @Column(name = "address")
     private String address;
 
+    @OneToOne(mappedBy = "site")
+    private Project project;
+
+    @JoinColumn(name = "personNo")
+    @OneToOne
+    private Employee employee;
+
     public Site() {
     }
 
@@ -62,5 +69,21 @@ public class Site {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 }
