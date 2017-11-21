@@ -15,22 +15,28 @@ import java.util.List;
 @CrossOrigin
 public class PurchaseController
 {
-//    @Autowired
-//    PurchaseService purchaseService;
-//
-//    @ResponseBody
-//    @RequestMapping(value="/purchases", method = RequestMethod.GET)
-//    public List<PurchaseOrder> getAllPurchases()
-//    {
-//        return purchaseService.getAllPurchaseOrders();
-//    }
-//
-//    @ResponseBody
-//    @RequestMapping(value="/purchases/{id}", method = RequestMethod.GET)
-//    public PurchaseOrder getPurchaseById(@PathVariable int id)
-//    {
-//        return purchaseService.getPurchaseOrderById(id);
-//    }
+    @Autowired
+    PurchaseService purchaseService;
+
+    @ResponseBody
+    @RequestMapping(value="/purchases", method = RequestMethod.GET)
+    public List<PurchaseOrder> getAllPurchases()
+    {
+        return purchaseService.getAllPurchaseOrders();
+    }
+
+    @RequestMapping(value="/purchases",method = RequestMethod.POST)
+    public void savePurchaseOrder(@RequestBody PurchaseOrder purchaseOrder)
+    {
+         purchaseService.addPurchaseOrder(purchaseOrder);
+    }
+
+    @ResponseBody
+    @RequestMapping(value="/purchases/{purchaseId}", method = RequestMethod.GET)
+    public PurchaseOrder getPurchaseById(@PathVariable String purchaseId)
+    {
+        return purchaseService.getPurchaseOrderById(purchaseId);
+    }
 //
 //    @RequestMapping(value = "/purchases/req/{id}", method = RequestMethod.GET)
 //    public List<PurchaseOrder> getPurchaseOrderByRequisitionId(@PathVariable int id) {
@@ -48,10 +54,7 @@ public class PurchaseController
 //        return purchaseService.getMinimumAmountPurchaseOrder(requisitionId);
 //    }
 //
-//    @RequestMapping(value="/purchases",method = RequestMethod.POST)
-//    public void savePurchaseOrder(@RequestBody PurchaseOrder purchaseOrder) {
-//         purchaseService.addPurchaseOrder(purchaseOrder);
-//    }
+//
 //
 //    @RequestMapping(value = "/purchases/delete/{purchaseNo}", method = RequestMethod.DELETE)
 //    public void removePurchaseOrder(int purchaseNo)

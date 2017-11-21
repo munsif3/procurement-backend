@@ -9,9 +9,9 @@ import java.util.List;
  */
 public interface PurchaseService
 {
-//    List<PurchaseOrder> getAllPurchaseOrders();
-//
-//    PurchaseOrder getPurchaseOrderById(int purchaseNo);
+      List<PurchaseOrder> getAllPurchaseOrders();
+      void addPurchaseOrder(PurchaseOrder purchaseOrder);
+      PurchaseOrder getPurchaseOrderById(String purchaseId);
 //
 //    void deletePurchaseOrder(int purchaseNo);
 //
@@ -21,6 +21,6 @@ public interface PurchaseService
 //
 //    PurchaseOrder getMinimumAmountPurchaseOrder(int requisitionId);
 //
-//    void addPurchaseOrder(PurchaseOrder purchaseOrder);
+
 
 }
