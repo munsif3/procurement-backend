@@ -8,4 +8,5 @@ public interface EmployeeService {
 	 Employee findByUserName(String userName);
 	 Employee addEmployee(Employee employee);
 	 List<Employee> getAllEmployees();
+	 Employee getEmployee(int id);
 }

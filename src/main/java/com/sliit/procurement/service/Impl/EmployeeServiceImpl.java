@@ -30,4 +30,9 @@ public class EmployeeServiceImpl implements EmployeeService{
 		return employeeRepository.findAll();
 	}
 
+	@Override
+	public Employee getEmployee(int id) {
+		return employeeRepository.findOne(id);
+	}
+
 }
