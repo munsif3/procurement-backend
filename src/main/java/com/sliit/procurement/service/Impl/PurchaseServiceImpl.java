@@ -49,6 +49,12 @@ public class PurchaseServiceImpl implements PurchaseService
         return purchaseRepository.findOne(purchaseId);
     }
 
+    @Override
+    public List<PurchaseOrder> getPurchaseOrderByRequestedDate() {
+        return purchaseRepository.getByRequestedDate();
+    }
+
+
 //
 //
 //    /**

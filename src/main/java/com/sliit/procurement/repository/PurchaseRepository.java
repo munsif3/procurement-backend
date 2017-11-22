@@ -5,6 +5,9 @@ import com.sliit.procurement.repository.custom.PurchaseOrderRepositoryCustom;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
+import java.util.List;
+
 /**
  * Created by Saranki on 11/17/2017.
  */
@@ -15,6 +18,7 @@ public interface PurchaseRepository extends JpaRepository<PurchaseOrder,String>,
 //    PurchaseOrder findByRequisitionIdAndPurchaseId(int requisitionId, int purchaseNo);
 //
 //    PurchaseOrder findFirstByRequisitionIdOrderByAmount(int requisitionId);
+
 
 
 }

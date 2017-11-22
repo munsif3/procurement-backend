@@ -37,6 +37,13 @@ public class PurchaseController
     {
         return purchaseService.getPurchaseOrderById(purchaseId);
     }
+
+    @ResponseBody
+    @RequestMapping(value = "/purchases/requisitions")
+    public List<PurchaseOrder> getPurchaseOrderByRequestedDate()
+    {
+        return purchaseService.getPurchaseOrderByRequestedDate();
+    }
 //
 //    @RequestMapping(value = "/purchases/req/{id}", method = RequestMethod.GET)
 //    public List<PurchaseOrder> getPurchaseOrderByRequisitionId(@PathVariable int id) {
