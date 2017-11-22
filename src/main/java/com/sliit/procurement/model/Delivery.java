@@ -1,5 +1,7 @@
 package com.sliit.procurement.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -53,6 +55,7 @@ public class Delivery implements Serializable {
     @Column(name = "comment")
     private String comment;
 
+    @JsonIgnore
     @JoinColumn(name = "purchaseNo", referencedColumnName = "purchaseNo")
     @ManyToOne
     private PurchaseOrder purchaseNo;
