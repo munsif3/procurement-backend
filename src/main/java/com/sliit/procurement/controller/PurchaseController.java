@@ -11,32 +11,39 @@ import java.util.List;
  * Created by Saranki on 11/17/2017.
  */
 
-@RestController
-@CrossOrigin
+//@RestController
+//@CrossOrigin
 public class PurchaseController
 {
-    @Autowired
-    PurchaseService purchaseService;
-
-    @ResponseBody
-    @RequestMapping(value="/purchases", method = RequestMethod.GET)
-    public List<PurchaseOrder> getAllPurchases()
-    {
-        return purchaseService.getAllPurchaseOrders();
-    }
-
-    @RequestMapping(value="/purchases",method = RequestMethod.POST)
-    public void savePurchaseOrder(@RequestBody PurchaseOrder purchaseOrder)
-    {
-         purchaseService.addPurchaseOrder(purchaseOrder);
-    }
-
-    @ResponseBody
-    @RequestMapping(value="/purchases/{purchaseId}", method = RequestMethod.GET)
-    public PurchaseOrder getPurchaseById(@PathVariable String purchaseId)
-    {
-        return purchaseService.getPurchaseOrderById(purchaseId);
-    }
+//    @Autowired
+//    PurchaseService purchaseService;
+//
+//    @ResponseBody
+//    @RequestMapping(value="/purchases", method = RequestMethod.GET)
+//    public List<PurchaseOrder> getAllPurchases()
+//    {
+//        return purchaseService.getAllPurchaseOrders();
+//    }
+//
+//    @RequestMapping(value="/purchases",method = RequestMethod.POST)
+//    public void savePurchaseOrder(@RequestBody PurchaseOrder purchaseOrder)
+//    {
+//         purchaseService.addPurchaseOrder(purchaseOrder);
+//    }
+//
+//    @ResponseBody
+//    @RequestMapping(value="/purchases/{purchaseId}", method = RequestMethod.GET)
+//    public PurchaseOrder getPurchaseById(@PathVariable String purchaseId)
+//    {
+//        return purchaseService.getPurchaseOrderById(purchaseId);
+//    }
+//
+//    @ResponseBody
+//    @RequestMapping(value = "/purchases/requisitions")
+//    public List<PurchaseOrder> getPurchaseOrderByRequestedDate()
+//    {
+//        return purchaseService.getPurchaseOrderByRequestedDate();
+//    }
 //
 //    @RequestMapping(value = "/purchases/req/{id}", method = RequestMethod.GET)
 //    public List<PurchaseOrder> getPurchaseOrderByRequisitionId(@PathVariable int id) {
