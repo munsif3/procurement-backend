@@ -1,5 +1,7 @@
 package com.sliit.procurement.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
@@ -38,10 +40,12 @@ public class PurchaseOrderItem implements Serializable {
     @Column(name = "subTotal")
     private Float subTotal;
 
+    @JsonIgnore
     @JoinColumn(name = "itemNo", referencedColumnName = "itemNo", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Item item;
 
+    @JsonIgnore
     @JoinColumn(name = "purchaseNo", referencedColumnName = "purchaseNo", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private PurchaseOrder purchaseOrder;
