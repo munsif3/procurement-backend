@@ -44,8 +44,6 @@ public class UserController {
 		return new ResponseEntity<List<User>>(users, HttpStatus.OK);
 	}
 	
-	
-
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/user/{name}", method = RequestMethod.GET)
 	public ResponseEntity<?> getUser(@PathVariable("name") String name) {
@@ -97,8 +95,8 @@ public class UserController {
 		 if(user.getEmail()!=null){
 			 userOld.setEmail(user.getEmail());
 		 }
-		 user=userService.addUser(user);
-	     return new ResponseEntity<User>(user,HttpStatus.CREATED);
+		 userOld=userService.addUser(userOld);
+	     return new ResponseEntity<User>(userOld,HttpStatus.CREATED);
 	 }
 
 }
