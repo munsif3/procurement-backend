@@ -17,8 +17,9 @@ public interface PurchaseOrderService {
 
     List<PurchaseOrder> getRequisitionOrderByStatus();
 
-    List<PurchaseOrder> getPurchaseOrderByStatus();
+    List<PurchaseOrder> getPurchaseOrderByStatus(String status);
 
+//    List<PurchaseOrder>
     //PurchaseOrder getPurchaseOrderByPurchaseId(String purchaseId);
 
 }

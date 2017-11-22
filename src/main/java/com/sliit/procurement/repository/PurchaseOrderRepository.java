@@ -10,4 +10,6 @@ import java.util.List;
  */
 public interface PurchaseOrderRepository extends JpaRepository<PurchaseOrder, String> {
 
+    List<PurchaseOrder> findByStatus(String status);
+
 }

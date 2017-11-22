@@ -1,5 +1,7 @@
 package com.sliit.procurement.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -106,6 +108,7 @@ public class Item implements Serializable {
     }
 
     @XmlTransient
+    @JsonIgnore
     public List<PurchaseOrderItem> getPurchaseOrderItemList() {
         return purchaseOrderItemList;
     }
@@ -115,6 +118,7 @@ public class Item implements Serializable {
     }
 
     @XmlTransient
+    @JsonIgnore
     public List<SupplierItem> getSupplierItemList() {
         return supplierItemList;
     }
