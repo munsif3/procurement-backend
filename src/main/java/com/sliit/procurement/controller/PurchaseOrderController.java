@@ -50,9 +50,9 @@ public class PurchaseOrderController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/purchaseOrders/purchaseHistory", method = RequestMethod.GET)
-    public List<PurchaseOrder> getPurchaseOrderByStatus()
+    @RequestMapping(value = "/purchaseOrders/{status}", method = RequestMethod.GET)
+    public List<PurchaseOrder> getPurchaseOrderByStatus(@PathVariable("status")  String status)
     {
-        return purchaseOrderService.getPurchaseOrderByStatus();
+        return purchaseOrderService.getPurchaseOrderByStatus(status);
     }
 }

@@ -42,8 +42,8 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
     }
 
     @Override
-    public List<PurchaseOrder> getPurchaseOrderByStatus() {
-        return purchaseOrderRepository.findAll();
+    public List<PurchaseOrder> getPurchaseOrderByStatus(String status) {
+        return purchaseOrderRepository.findByStatus(status);
     }
 
 //    @Override

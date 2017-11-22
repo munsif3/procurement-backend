@@ -63,6 +63,7 @@ public class Supplier implements Serializable {
     @Column(name = "personNo")
     private Integer personNo;
 
+
     @OneToMany(mappedBy = "supplierNo")
     private List<PurchaseOrder> purchaseOrderList;
 

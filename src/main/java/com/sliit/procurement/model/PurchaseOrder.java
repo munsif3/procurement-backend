@@ -6,21 +6,7 @@ import com.sliit.procurement.model.Supplier;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -31,17 +17,17 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "purchase_order",  schema = "")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "PurchaseOrder.findAll", query = "SELECT p FROM PurchaseOrder p")
-    , @NamedQuery(name = "PurchaseOrder.findByPurchaseNo", query = "SELECT p FROM PurchaseOrder p WHERE p.purchaseNo = :purchaseNo")
-    , @NamedQuery(name = "PurchaseOrder.findByPurchaseId", query = "SELECT p FROM PurchaseOrder p WHERE p.purchaseId = :purchaseId")
-    , @NamedQuery(name = "PurchaseOrder.findByRequestedDate", query = "SELECT p FROM PurchaseOrder p WHERE p.requestedDate = :requestedDate")
-    , @NamedQuery(name = "PurchaseOrder.findByPreparedDate", query = "SELECT p FROM PurchaseOrder p WHERE p.preparedDate = :preparedDate")
-    , @NamedQuery(name = "PurchaseOrder.findByApprovedDate", query = "SELECT p FROM PurchaseOrder p WHERE p.approvedDate = :approvedDate")
-    , @NamedQuery(name = "PurchaseOrder.findByPurchaseExpectedDate", query = "SELECT p FROM PurchaseOrder p WHERE p.purchaseExpectedDate = :purchaseExpectedDate")
-    , @NamedQuery(name = "PurchaseOrder.findByTotalAmount", query = "SELECT p FROM PurchaseOrder p WHERE p.totalAmount = :totalAmount")
-    , @NamedQuery(name = "PurchaseOrder.findByStatus", query = "SELECT p FROM PurchaseOrder p WHERE p.status = :status")
-    , @NamedQuery(name = "PurchaseOrder.findByComments", query = "SELECT p FROM PurchaseOrder p WHERE p.comments = :comments")})
+//@NamedQueries({
+//    @NamedQuery(name = "PurchaseOrder.findAll", query = "SELECT p FROM PurchaseOrder p")
+//    , @NamedQuery(name = "PurchaseOrder.findByPurchaseNo", query = "SELECT p FROM PurchaseOrder p WHERE p.purchaseNo = :purchaseNo")
+//    , @NamedQuery(name = "PurchaseOrder.findByPurchaseId", query = "SELECT p FROM PurchaseOrder p WHERE p.purchaseId = :purchaseId")
+//    , @NamedQuery(name = "PurchaseOrder.findByRequestedDate", query = "SELECT p FROM PurchaseOrder p WHERE p.requestedDate = :requestedDate")
+//    , @NamedQuery(name = "PurchaseOrder.findByPreparedDate", query = "SELECT p FROM PurchaseOrder p WHERE p.preparedDate = :preparedDate")
+//    , @NamedQuery(name = "PurchaseOrder.findByApprovedDate", query = "SELECT p FROM PurchaseOrder p WHERE p.approvedDate = :approvedDate")
+//    , @NamedQuery(name = "PurchaseOrder.findByPurchaseExpectedDate", query = "SELECT p FROM PurchaseOrder p WHERE p.purchaseExpectedDate = :purchaseExpectedDate")
+//    , @NamedQuery(name = "PurchaseOrder.findByTotalAmount", query = "SELECT p FROM PurchaseOrder p WHERE p.totalAmount = :totalAmount")
+//    , @NamedQuery(name = "PurchaseOrder.findByStatus", query = "SELECT p FROM PurchaseOrder p WHERE p.status = :status")
+//    , @NamedQuery(name = "PurchaseOrder.findByComments", query = "SELECT p FROM PurchaseOrder p WHERE p.comments = :comments")})
 public class PurchaseOrder implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -217,7 +203,8 @@ public class PurchaseOrder implements Serializable {
     public void setApprovedBy(Employee approvedBy) {
         this.approvedBy = approvedBy;
     }
-    @JsonIgnore
+
+
     public Employee getPreparedBy() {
         return preparedBy;
     }
@@ -226,6 +213,7 @@ public class PurchaseOrder implements Serializable {
         this.preparedBy = preparedBy;
     }
 
+
     public Employee getRequestedBy() {
         return requestedBy;
     }
@@ -233,7 +221,9 @@ public class PurchaseOrder implements Serializable {
     public void setRequestedBy(Employee requestedBy) {
         this.requestedBy = requestedBy;
     }
-    
+
+    @XmlTransient
+    @JsonIgnore
     public Supplier getSupplierNo() {
         return supplierNo;
     }

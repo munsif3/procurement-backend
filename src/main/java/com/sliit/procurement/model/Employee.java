@@ -3,6 +3,7 @@ package com.sliit.procurement.model;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import java.util.List;
@@ -41,11 +42,14 @@ public class Employee extends User{
     @OneToOne(mappedBy = "personNo")
     private Site site;
 
+
     @OneToMany(mappedBy = "approvedBy")
     private List<PurchaseOrder> purchaseOrderList;
 
+
     @OneToMany(mappedBy = "preparedBy")
     private List<PurchaseOrder> purchaseOrderList1;
+
 
     @OneToMany(mappedBy = "requestedBy")
     private List<PurchaseOrder> purchaseOrderList2;
