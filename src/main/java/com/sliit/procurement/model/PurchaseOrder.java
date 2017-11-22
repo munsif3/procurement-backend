@@ -1,5 +1,6 @@
 package com.sliit.procurement.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sliit.procurement.model.Employee;
 import com.sliit.procurement.model.Supplier;
 import java.io.Serializable;
@@ -80,27 +81,34 @@ public class PurchaseOrder implements Serializable {
     @Column(name = "comments")
     private String comments;
 
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "purchaseOrder")
     private List<PurchaseOrderItem> purchaseOrderItemList;
 
+
     @OneToMany(mappedBy = "purchaseNo")
     private List<Delivery> deliveryList;
+
 
     @JoinColumn(name = "approvedBy", referencedColumnName = "personNo")
     @ManyToOne
     private Employee approvedBy;
 
+
     @JoinColumn(name = "preparedBy", referencedColumnName = "personNo")
     @ManyToOne
     private Employee preparedBy;
+
 
     @JoinColumn(name = "requestedBy", referencedColumnName = "personNo")
     @ManyToOne
     private Employee requestedBy;
 
+
     @JoinColumn(name = "supplierNo", referencedColumnName = "personNo")
     @ManyToOne
     private Supplier supplierNo;
+
 
     @OneToMany(mappedBy = "purchaseNo")
     private List<Payment> paymentList;
@@ -201,6 +209,7 @@ public class PurchaseOrder implements Serializable {
         this.deliveryList = deliveryList;
     }
 
+
     public Employee getApprovedBy() {
         return approvedBy;
     }
@@ -208,7 +217,7 @@ public class PurchaseOrder implements Serializable {
     public void setApprovedBy(Employee approvedBy) {
         this.approvedBy = approvedBy;
     }
-
+    @JsonIgnore
     public Employee getPreparedBy() {
         return preparedBy;
     }
@@ -224,7 +233,7 @@ public class PurchaseOrder implements Serializable {
     public void setRequestedBy(Employee requestedBy) {
         this.requestedBy = requestedBy;
     }
-
+    @JsonIgnore
     public Supplier getSupplierNo() {
         return supplierNo;
     }

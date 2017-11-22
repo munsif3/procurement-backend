@@ -35,12 +35,12 @@ public class PurchaseOrderController {
         return purchaseOrderService.updatePurchaseOrder(purchaseOrder);
     }
 
-    @ResponseBody
-    @RequestMapping(value = "/purchaseOrders/{purchaseId}", method = RequestMethod.GET)
-    public PurchaseOrder getPurchaseOrderByPurchaseId(@PathVariable String purchaseId)
-    {
-        return purchaseOrderService.getPurchaseOrderById(purchaseId);
-    }
+//    @ResponseBody
+//    @RequestMapping(value = "/purchaseOrders/{purchaseId}", method = RequestMethod.GET)
+//    public PurchaseOrder getPurchaseOrderByPurchaseId(@PathVariable String purchaseId)
+//    {
+//        return purchaseOrderService.getPurchaseOrderByPurchaseId(purchaseId);
+//    }
 
     @ResponseBody
     @RequestMapping(value = "/purchaseOrders/requisitions", method = RequestMethod.GET)

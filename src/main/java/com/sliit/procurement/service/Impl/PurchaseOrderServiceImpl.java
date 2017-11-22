@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 
 import javax.smartcardio.Card;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -36,11 +37,6 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
     }
 
     @Override
-    public PurchaseOrder getPurchaseOrderById(String purchaseId) {
-        return purchaseOrderRepository.findOne(purchaseId);
-    }
-
-    @Override
     public List<PurchaseOrder> getRequisitionOrderByStatus() {
         return purchaseOrderRepository.findAll();
     }
@@ -49,6 +45,11 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
     public List<PurchaseOrder> getPurchaseOrderByStatus() {
         return purchaseOrderRepository.findAll();
     }
+
+//    @Override
+//    public PurchaseOrder getPurchaseOrderByPurchaseId(String purchaseId) {
+//        return purchaseOrderRepository.findOne(purchaseId);
+//    }
 
 
 }
