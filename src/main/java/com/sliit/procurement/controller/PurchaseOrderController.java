@@ -43,16 +43,16 @@ public class PurchaseOrderController {
 //    }
 
     @ResponseBody
-    @RequestMapping(value = "/purchaseOrders/requisitions", method = RequestMethod.GET)
-    public List<PurchaseOrder> getRequisitionOrderByStatus()
-    {
-        return purchaseOrderService.getRequisitionOrderByStatus();
-    }
-
-    @ResponseBody
     @RequestMapping(value = "/purchaseOrders/{status}", method = RequestMethod.GET)
     public List<PurchaseOrder> getPurchaseOrderByStatus(@PathVariable("status")  String status)
     {
         return purchaseOrderService.getPurchaseOrderByStatus(status);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/purchaseOrders/purchaseHistory", method = RequestMethod.GET)
+    public List<PurchaseOrder> getOrderByStatus()
+    {
+        return purchaseOrderService.getOrderByStatus();
     }
 }

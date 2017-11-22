@@ -11,14 +11,5 @@ import java.util.List;
  */
 public interface PurchaseOrderRepositoryCustom
 {
-//    List<PurchaseOrder> getPurchaseOrderByRequisitionId(String requisitionId);
-//
-//    List<PurchaseOrder> getMinimumAmountPurchaseOrderByRequisitionId(String requisitionId);
-
-      //List<PurchaseOrder> getByRequestedDate();
-
-       List<PurchaseOrder> getRequisitionOrderByStatus();
-
-       List<PurchaseOrder> getPurchaseOrderByStatus();
-
+       List<PurchaseOrder> getOrderByStatus();
 }

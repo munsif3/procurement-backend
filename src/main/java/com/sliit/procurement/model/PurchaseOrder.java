@@ -90,7 +90,7 @@ public class PurchaseOrder implements Serializable {
     @ManyToOne
     private Employee requestedBy;
 
-
+    @JsonIgnore
     @JoinColumn(name = "supplierNo", referencedColumnName = "personNo")
     @ManyToOne
     private Supplier supplierNo;
@@ -177,7 +177,7 @@ public class PurchaseOrder implements Serializable {
         this.comments = comments;
     }
 
-    @XmlTransient
+    //@XmlTransient
     public List<PurchaseOrderItem> getPurchaseOrderItemList() {
         return purchaseOrderItemList;
     }
@@ -222,8 +222,7 @@ public class PurchaseOrder implements Serializable {
         this.requestedBy = requestedBy;
     }
 
-    @XmlTransient
-    @JsonIgnore
+
     public Supplier getSupplierNo() {
         return supplierNo;
     }
