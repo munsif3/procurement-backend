@@ -40,7 +40,7 @@ public class Site implements Serializable {
     @Column(name = "siteNo")
     private String siteNo;
 
-    @JoinColumn(name = "personNo", referencedColumnName = "personNo")
+    @JoinColumn(name = "personNo")
     @OneToOne
     private Employee personNo;
 
@@ -91,6 +91,10 @@ public class Site implements Serializable {
         return personNo;
     }
 
+
+    /*public Employee getEmployee() {
+        return personNo;
+    }*/
     public void setPersonNo(Employee personNo) {
         this.personNo = personNo;
     }
@@ -122,6 +126,7 @@ public class Site implements Serializable {
             return false;
         }
         return true;
+
     }
 
     @Override

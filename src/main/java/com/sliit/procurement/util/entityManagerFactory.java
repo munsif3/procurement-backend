@@ -1,4 +1,4 @@
-package com.sliit.procurement.util;
+package com.sliit.procurement.Util;
 
 import javax.persistence.*;
 

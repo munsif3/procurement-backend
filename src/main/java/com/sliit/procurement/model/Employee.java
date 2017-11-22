@@ -23,10 +23,6 @@ public class Employee extends User{
 	@Column(name="Password")
 	private String Password;
 	
-	@JoinColumn(name = "personNo")
-    @OneToOne
-    @MapsId
-	private User user;
 	
 	@ManyToOne
     @JoinColumn(name = "department_id")
