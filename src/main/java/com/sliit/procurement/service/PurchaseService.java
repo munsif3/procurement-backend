@@ -9,13 +9,13 @@ import java.util.List;
  */
 public interface PurchaseService
 {
-      List<PurchaseOrder> getAllPurchaseOrders();
-
-      void addPurchaseOrder(PurchaseOrder purchaseOrder);
-
-      PurchaseOrder getPurchaseOrderById(String purchaseId);
-
-      List<PurchaseOrder> getPurchaseOrderByRequestedDate();
+//      List<PurchaseOrder> getAllPurchaseOrders();
+//
+//      void addPurchaseOrder(PurchaseOrder purchaseOrder);
+//
+//      PurchaseOrder getPurchaseOrderById(String purchaseId);
+//
+//      List<PurchaseOrder> getPurchaseOrderByRequestedDate();
 
 //
 //    void deletePurchaseOrder(int purchaseNo);
@@ -29,3 +29,4 @@ public interface PurchaseService
 
 
 }
+//
