@@ -34,4 +34,25 @@ public class PurchaseOrderController {
     public PurchaseOrder updatePurchaseOrder(@RequestBody final PurchaseOrder purchaseOrder) {
         return purchaseOrderService.updatePurchaseOrder(purchaseOrder);
     }
+
+    @ResponseBody
+    @RequestMapping(value = "/purchaseOrders/{purchaseId}", method = RequestMethod.GET)
+    public PurchaseOrder getPurchaseOrderByPurchaseId(@PathVariable String purchaseId)
+    {
+        return purchaseOrderService.getPurchaseOrderById(purchaseId);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/purchaseOrders/requisitions", method = RequestMethod.GET)
+    public List<PurchaseOrder> getRequisitionOrderByStatus()
+    {
+        return purchaseOrderService.getRequisitionOrderByStatus();
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/purchaseOrders/purchaseHistory", method = RequestMethod.GET)
+    public List<PurchaseOrder> getPurchaseOrderByStatus()
+    {
+        return purchaseOrderService.getPurchaseOrderByStatus();
+    }
 }

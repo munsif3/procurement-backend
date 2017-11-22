@@ -14,10 +14,31 @@ import java.util.List;
 /**
  * Created by Saranki on 11/17/2017.
  */
-//@Repository
-//@Transactional(readOnly=true)
+@Repository
+@Transactional(readOnly=true)
 public class PurchaseOrderRepositoryImpl implements PurchaseOrderRepositoryCustom
 {
+    @PersistenceContext
+    EntityManager entityManager;
+
+    @Override
+    public List<PurchaseOrder> getRequisitionOrderByStatus() {
+        Query query = entityManager.createNativeQuery("SELECT p.* FROM purchase_order as p " +
+                "WHERE p.status='Placed' ", PurchaseOrder.class);
+
+
+        return query.getResultList();
+    }
+
+    @Override
+    public List<PurchaseOrder> getPurchaseOrderByStatus() {
+        Query query = entityManager.createNativeQuery("SELECT p.* FROM purchase_order as p " +
+                "WHERE p.status <> 'Placed' ", PurchaseOrder.class);
+
+
+        return query.getResultList();
+    }
+
 //    @PersistenceContext
 //    EntityManager entityManager;
 //

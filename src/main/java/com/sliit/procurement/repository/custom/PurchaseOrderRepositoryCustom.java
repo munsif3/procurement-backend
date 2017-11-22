@@ -16,4 +16,9 @@ public interface PurchaseOrderRepositoryCustom
 //    List<PurchaseOrder> getMinimumAmountPurchaseOrderByRequisitionId(String requisitionId);
 
       //List<PurchaseOrder> getByRequestedDate();
+
+       List<PurchaseOrder> getRequisitionOrderByStatus();
+
+       List<PurchaseOrder> getPurchaseOrderByStatus();
+
 }
