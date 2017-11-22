@@ -14,4 +14,11 @@ public interface PurchaseOrderService {
     PurchaseOrder addPurchaseOrder(PurchaseOrder purchaseOrder);
 
     PurchaseOrder updatePurchaseOrder(PurchaseOrder purchaseOrder);
+
+    PurchaseOrder getPurchaseOrderById(String purchaseId);
+
+    List<PurchaseOrder> getRequisitionOrderByStatus();
+
+    List<PurchaseOrder> getPurchaseOrderByStatus();
+
 }

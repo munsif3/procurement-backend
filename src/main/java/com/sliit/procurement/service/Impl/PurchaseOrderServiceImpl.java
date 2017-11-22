@@ -1,5 +1,6 @@
 package com.sliit.procurement.service.Impl;
 
+import com.sliit.procurement.model.Employee;
 import com.sliit.procurement.model.PurchaseOrder;
 import com.sliit.procurement.repository.PurchaseOrderRepository;
 import com.sliit.procurement.service.PurchaseOrderService;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
+import javax.smartcardio.Card;
 import java.util.List;
 
 /**
@@ -19,7 +21,9 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
     PurchaseOrderRepository purchaseOrderRepository;
 
     @Override
-    public List<PurchaseOrder> getAllPurchaseOrders(){return purchaseOrderRepository.findAll();}
+    public List<PurchaseOrder> getAllPurchaseOrders(){
+        return purchaseOrderRepository.findAll();
+    }
 
     @Override
     public PurchaseOrder addPurchaseOrder(PurchaseOrder addPurchaseOrder) {
@@ -30,4 +34,21 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
     public  PurchaseOrder  updatePurchaseOrder(PurchaseOrder purchaseOrder){
         return purchaseOrderRepository.save(purchaseOrder);
     }
+
+    @Override
+    public PurchaseOrder getPurchaseOrderById(String purchaseId) {
+        return purchaseOrderRepository.findOne(purchaseId);
+    }
+
+    @Override
+    public List<PurchaseOrder> getRequisitionOrderByStatus() {
+        return purchaseOrderRepository.findAll();
+    }
+
+    @Override
+    public List<PurchaseOrder> getPurchaseOrderByStatus() {
+        return purchaseOrderRepository.findAll();
+    }
+
+
 }
