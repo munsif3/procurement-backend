@@ -22,16 +22,7 @@ public class PurchaseOrderRepositoryImpl implements PurchaseOrderRepositoryCusto
     EntityManager entityManager;
 
     @Override
-    public List<PurchaseOrder> getRequisitionOrderByStatus() {
-        Query query = entityManager.createNativeQuery("SELECT p.* FROM purchase_order as p " +
-                "WHERE p.status='Placed' ", PurchaseOrder.class);
-
-
-        return query.getResultList();
-    }
-
-    @Override
-    public List<PurchaseOrder> getPurchaseOrderByStatus() {
+    public List<PurchaseOrder> getOrderByStatus() {
         Query query = entityManager.createNativeQuery("SELECT p.* FROM purchase_order as p " +
                 "WHERE p.status <> 'Placed' ", PurchaseOrder.class);
 
