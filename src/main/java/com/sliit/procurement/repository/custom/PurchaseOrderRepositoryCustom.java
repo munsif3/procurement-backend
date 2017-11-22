@@ -2,6 +2,8 @@ package com.sliit.procurement.repository.custom;
 
 import com.sliit.procurement.model.PurchaseOrder;
 
+
+
 import java.util.List;
 
 /**
@@ -12,4 +14,6 @@ public interface PurchaseOrderRepositoryCustom
 //    List<PurchaseOrder> getPurchaseOrderByRequisitionId(String requisitionId);
 //
 //    List<PurchaseOrder> getMinimumAmountPurchaseOrderByRequisitionId(String requisitionId);
+
+      List<PurchaseOrder> getByRequestedDate();
 }
