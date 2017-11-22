@@ -233,7 +233,7 @@ public class PurchaseOrder implements Serializable {
     public void setRequestedBy(Employee requestedBy) {
         this.requestedBy = requestedBy;
     }
-    @JsonIgnore
+    
     public Supplier getSupplierNo() {
         return supplierNo;
     }
