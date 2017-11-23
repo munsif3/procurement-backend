@@ -46,6 +46,16 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
         return purchaseOrderRepository.findByStatus(status);
     }
 
+    @Override
+    public PurchaseOrder getPurchaseOrderByPurchaseNo(int purchaseNo) {
+        return purchaseOrderRepository.findByPurchaseNo(purchaseNo);
+    }
+
+    @Override
+    public PurchaseOrder getPurchaseOrderByPurchaseId(String purchaseId) {
+        return purchaseOrderRepository.findByPurchaseId(purchaseId);
+    }
+
 //    @Override
 //    public PurchaseOrder getPurchaseOrderByPurchaseId(String purchaseId) {
 //        return purchaseOrderRepository.findOne(purchaseId);

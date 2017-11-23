@@ -1,6 +1,7 @@
 package com.sliit.procurement.service;
 
 import com.sliit.procurement.model.PurchaseOrder;
+import com.sliit.procurement.model.PurchaseOrderItemPK;
 
 import java.util.List;
 
@@ -18,6 +19,11 @@ public interface PurchaseOrderService {
     List<PurchaseOrder> getRequisitionOrderByStatus();
 
     List<PurchaseOrder> getPurchaseOrderByStatus(String status);
+
+    PurchaseOrder getPurchaseOrderByPurchaseNo(int purchaseNo);
+
+    PurchaseOrder getPurchaseOrderByPurchaseId(String purchaseId);
+
 
 //    List<PurchaseOrder>
     //PurchaseOrder getPurchaseOrderByPurchaseId(String purchaseId);
