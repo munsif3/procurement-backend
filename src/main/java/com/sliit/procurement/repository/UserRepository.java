@@ -6,4 +6,5 @@ import com.sliit.procurement.model.User;
 
 public interface UserRepository extends JpaRepository<User,Integer>  {
 
+    User findByPersonNo(int personNo);
 }
