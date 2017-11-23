@@ -184,6 +184,10 @@ public class PurchaseOrder implements Serializable {
         this.comments = comments;
     }
 
+    public void setRequestedBy(int personNo){
+        requestedBy.setPersonNo(personNo);
+    }
+
     //@XmlTransient
     public List<PurchaseOrderItem> getPurchaseOrderItemList() {
         return purchaseOrderItemList;
