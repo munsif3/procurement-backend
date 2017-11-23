@@ -1,12 +1,14 @@
 package com.sliit.procurement.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.*;
 import com.sliit.procurement.model.Employee;
 import com.sliit.procurement.model.Supplier;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -78,21 +80,26 @@ public class PurchaseOrder implements Serializable {
 
     @JoinColumn(name = "approvedBy", referencedColumnName = "personNo")
     @ManyToOne
+    @XmlTransient
     private Employee approvedBy;
 
 
     @JoinColumn(name = "preparedBy", referencedColumnName = "personNo")
     @ManyToOne
+    @XmlTransient
     private Employee preparedBy;
 
 
     @JoinColumn(name = "requestedBy", referencedColumnName = "personNo")
     @ManyToOne
+    @XmlTransient
     private Employee requestedBy;
 
     @JsonIgnore
     @JoinColumn(name = "supplierNo", referencedColumnName = "personNo")
     @ManyToOne
+//    @JsonManagedReference
+//    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "personNo")
     private Supplier supplierNo;
 
 
@@ -186,7 +193,7 @@ public class PurchaseOrder implements Serializable {
         this.purchaseOrderItemList = purchaseOrderItemList;
     }
 
-    @XmlTransient
+//    @XmlTransient
     public List<Delivery> getDeliveryList() {
         return deliveryList;
     }
@@ -194,8 +201,8 @@ public class PurchaseOrder implements Serializable {
     public void setDeliveryList(List<Delivery> deliveryList) {
         this.deliveryList = deliveryList;
     }
-
-
+//
+//    @XmlTransient
     public Employee getApprovedBy() {
         return approvedBy;
     }
@@ -204,7 +211,7 @@ public class PurchaseOrder implements Serializable {
         this.approvedBy = approvedBy;
     }
 
-
+//    @XmlTransient
     public Employee getPreparedBy() {
         return preparedBy;
     }
@@ -213,7 +220,7 @@ public class PurchaseOrder implements Serializable {
         this.preparedBy = preparedBy;
     }
 
-
+//    @XmlTransient
     public Employee getRequestedBy() {
         return requestedBy;
     }
@@ -221,7 +228,6 @@ public class PurchaseOrder implements Serializable {
     public void setRequestedBy(Employee requestedBy) {
         this.requestedBy = requestedBy;
     }
-
 
     public Supplier getSupplierNo() {
         return supplierNo;

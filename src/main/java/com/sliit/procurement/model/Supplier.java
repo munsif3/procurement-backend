@@ -1,5 +1,6 @@
 package com.sliit.procurement.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sliit.procurement.model.PurchaseOrder;
 import com.sliit.procurement.model.SupplierItem;
@@ -63,10 +64,11 @@ public class Supplier implements Serializable {
     @Column(name = "personNo")
     private Integer personNo;
 
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "supplierNo")
+    @OneToMany(mappedBy = "supplierNo")
     private List<PurchaseOrder> purchaseOrderList;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "supplier")
+    @JsonIgnore
     private List<SupplierItem> supplierItemList;
 
     @JoinColumn(name = "personNo", referencedColumnName = "personNo", insertable = false, updatable = false)

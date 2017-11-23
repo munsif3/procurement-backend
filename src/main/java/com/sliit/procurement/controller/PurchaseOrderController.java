@@ -3,6 +3,7 @@ package com.sliit.procurement.controller;
 import com.sliit.procurement.model.PurchaseOrder;
 import com.sliit.procurement.service.PurchaseOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
  */
 @RestController
 @CrossOrigin
+@RequestMapping("/api")
 public class PurchaseOrderController {
 
     @Autowired
@@ -54,5 +56,19 @@ public class PurchaseOrderController {
     public List<PurchaseOrder> getOrderByStatus()
     {
         return purchaseOrderService.getOrderByStatus();
+    }
+
+
+//    @ResponseBody
+//    @RequestMapping(value = "/purchaseOrders/purchaseNo/{purchaseNo}", method = RequestMethod.GET)
+//    public PurchaseOrder getPurchaseOrderByPurchaseNo(@PathVariable("purchaseNo") int purchaseNo){
+//        return purchaseOrderService.getPurchaseOrderByPurchaseNo(purchaseNo);
+//    }
+
+
+    @ResponseBody
+    @RequestMapping(value = "/purchaseOrders/purchaseId/{purchaseId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public PurchaseOrder getPurchaseOrderByPurchaseNo(@PathVariable("purchaseId") String purchaseId){
+        return purchaseOrderService.getPurchaseOrderByPurchaseId(purchaseId);
     }
 }
