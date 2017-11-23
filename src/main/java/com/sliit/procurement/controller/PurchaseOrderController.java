@@ -3,9 +3,12 @@ package com.sliit.procurement.controller;
 import com.sliit.procurement.model.PurchaseOrder;
 import com.sliit.procurement.service.PurchaseOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -25,10 +28,19 @@ public class PurchaseOrderController {
         return purchaseOrderService.getAllPurchaseOrders();
     }
 
-    @ResponseBody
-    @RequestMapping(value = "/purchaseOrders", method = RequestMethod.POST, consumes = "application/json")
-    public PurchaseOrder addPurchaseOrder(@RequestBody PurchaseOrder purchaseOrder) {
-        return purchaseOrderService.addPurchaseOrder(purchaseOrder);
+//    @ResponseBody
+//    @RequestMapping(value = "/purchaseOrders", method = RequestMethod.POST, consumes = "application/json")
+//    public PurchaseOrder addPurchaseOrder(@RequestBody PurchaseOrder purchaseOrder) {
+//        return purchaseOrderService.addPurchaseOrder(purchaseOrder);
+//    }
+
+    @PostMapping("/purchaseOrders")
+    public ResponseEntity<PurchaseOrder> addPurchaseOrder(@Valid @RequestBody PurchaseOrder purchaseOrder) {
+        purchaseOrder = purchaseOrderService.addPurchaseOrder(purchaseOrder);
+        purchaseOrder.setPurchaseId("PUR" + String.format("%03d", purchaseOrder.getPurchaseNo()));
+        //purchaseOrder.setRequestedBy(4);
+        purchaseOrder = purchaseOrderService.addPurchaseOrder(purchaseOrder);
+        return new ResponseEntity<PurchaseOrder>(purchaseOrder, HttpStatus.CREATED);
     }
 
     @ResponseBody
