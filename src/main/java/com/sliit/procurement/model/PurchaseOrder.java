@@ -95,7 +95,7 @@ public class PurchaseOrder implements Serializable {
     @XmlTransient
     private Employee requestedBy;
 
-    @JsonIgnore
+    //@JsonIgnore
     @JoinColumn(name = "supplierNo", referencedColumnName = "personNo")
     @ManyToOne
 //    @JsonManagedReference
