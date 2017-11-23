@@ -30,73 +30,78 @@ import com.sliit.procurement.model.User;
 @CrossOrigin
 public class UserController {
 
-	@Autowired
-	UserService userService;
-	@Autowired
-	EmployeeService employeeService;
+    @Autowired
+    UserService userService;
+    @Autowired
+    EmployeeService employeeService;
 
-	@RequestMapping(value = "/users/", method = RequestMethod.GET)
-	public ResponseEntity<List<User>> listAllUsers() {
-		List<User> users = userService.findAll();
-		if (users.isEmpty()) {
-			return new ResponseEntity(HttpStatus.NO_CONTENT);
-		}
-		return new ResponseEntity<List<User>>(users, HttpStatus.OK);
-	}
-	
-	@SuppressWarnings("unchecked")
-	@RequestMapping(value = "/user/{name}", method = RequestMethod.GET)
-	public ResponseEntity<?> getUser(@PathVariable("name") String name) {
-		Employee employee = employeeService.findByUserName(name);
-		if (employee == null) {
-			return new ResponseEntity(new CustomErrorType("User with name " + name + " not found"),
-					HttpStatus.NOT_FOUND);
-		}
-		User user = userService.findById(employee.getPersonNo());
-		if (user == null) {
-			return new ResponseEntity(new CustomErrorType("User with name " + name + " not found"),
-					HttpStatus.NOT_FOUND);
-		}
-		return new ResponseEntity<User>(user, HttpStatus.OK);
-	}
-	
-	@SuppressWarnings("unchecked")
-	@RequestMapping(value = "/getUser/{id}", method = RequestMethod.GET)
-	public ResponseEntity<?> getUserById(@PathVariable("id") int id) {
-		
-		User user = userService.findById(id);
-		if (user == null) {
-			return new ResponseEntity(new CustomErrorType("User with id " + id + " not found"),
-					HttpStatus.NOT_FOUND);
-		}
-		return new ResponseEntity<User>(user, HttpStatus.OK);
-	}
-	
-	@PostMapping("/user")
-	 public ResponseEntity<User>addUser(@Valid @RequestBody User user) {
-		 user= userService.addUser(user);
-		 user.setPersonId("PER" + String.format("%03d", user.getPersonNo()));
-		 user=userService.addUser(user);
-	     return new ResponseEntity<User>(user,HttpStatus.CREATED);
-	 }
-	
-	@PutMapping("/user")
-	 public ResponseEntity<User>updateUser(@Valid @RequestBody User user) {
-		 User userOld = userService.findById(user.getPersonNo());
-		 if(user.getName()!=null){
-			 userOld.setName(user.getName());
-		 }
-		 if(user.getNic()!=null){
-			 userOld.setNic(user.getNic());
-		 }
-		 if(user.getContactNo()>0){
-			 userOld.setContactNo(user.getContactNo());
-		 }
-		 if(user.getEmail()!=null){
-			 userOld.setEmail(user.getEmail());
-		 }
-		 userOld=userService.addUser(userOld);
-	     return new ResponseEntity<User>(userOld,HttpStatus.CREATED);
-	 }
+    @RequestMapping(value = "/users/", method = RequestMethod.GET)
+    public ResponseEntity<List<User>> listAllUsers() {
+        List<User> users = userService.findAll();
+        if (users.isEmpty()) {
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<List<User>>(users, HttpStatus.OK);
+    }
+
+    @SuppressWarnings("unchecked")
+    @RequestMapping(value = "/user/{name}", method = RequestMethod.GET)
+    public ResponseEntity<?> getUser(@PathVariable("name") String name) {
+        Employee employee = employeeService.findByUserName(name);
+        if (employee == null) {
+            return new ResponseEntity(new CustomErrorType("User with name " + name + " not found"),
+                    HttpStatus.NOT_FOUND);
+        }
+        User user = userService.findById(employee.getPersonNo());
+        if (user == null) {
+            return new ResponseEntity(new CustomErrorType("User with name " + name + " not found"),
+                    HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<User>(user, HttpStatus.OK);
+    }
+
+    @SuppressWarnings("unchecked")
+    @RequestMapping(value = "/getUser/{id}", method = RequestMethod.GET)
+    public ResponseEntity<?> getUserById(@PathVariable("id") int id) {
+
+        User user = userService.findById(id);
+        if (user == null) {
+            return new ResponseEntity(new CustomErrorType("User with id " + id + " not found"),
+                    HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<User>(user, HttpStatus.OK);
+    }
+
+    @PostMapping("/user")
+    public ResponseEntity<User> addUser(@Valid @RequestBody User user) {
+        user = userService.addUser(user);
+        user.setPersonId("PER" + String.format("%03d", user.getPersonNo()));
+        user = userService.addUser(user);
+        return new ResponseEntity<User>(user, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/user")
+    public ResponseEntity<User> updateUser(@Valid @RequestBody User user) {
+        User userOld = userService.findById(user.getPersonNo());
+        if (user.getName() != null) {
+            userOld.setName(user.getName());
+        }
+        if (user.getNic() != null) {
+            userOld.setNic(user.getNic());
+        }
+        if (user.getContactNo() > 0) {
+            userOld.setContactNo(user.getContactNo());
+        }
+        if (user.getEmail() != null) {
+            userOld.setEmail(user.getEmail());
+        }
+        userOld = userService.addUser(userOld);
+        return new ResponseEntity<User>(userOld, HttpStatus.CREATED);
+    }
+
+        @RequestMapping(value = "/user/personNo/{personNo}", method = RequestMethod.GET)
+    public User getUserByPersonNo(@PathVariable("personNo") int personNo) {
+        return userService.findUserByPersonNo(personNo);
+    }
 
 }
