@@ -6,6 +6,8 @@ import com.sliit.procurement.service.PurchaseOrderItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by User on 22/11/2017.
  */
@@ -19,5 +21,10 @@ public class PurchaseOrderItemServiceImpl implements PurchaseOrderItemService {
     @Override
     public PurchaseOrderItem addPurchaseOrderItem(PurchaseOrderItem purchaseOrderItem) {
         return purchaseOrderItemRepository.save(purchaseOrderItem);
+    }
+
+    @Override
+    public List<PurchaseOrderItem> getAllPurchaseOrderItems(){
+        return purchaseOrderItemRepository.findAll();
     }
 }

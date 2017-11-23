@@ -16,9 +16,8 @@ public interface PurchaseOrderService {
 
     PurchaseOrder updatePurchaseOrder(PurchaseOrder purchaseOrder);
 
-    List<PurchaseOrder> getRequisitionOrderByStatus();
-
     List<PurchaseOrder> getPurchaseOrderByStatus(String status);
+
 
     PurchaseOrder getPurchaseOrderByPurchaseNo(int purchaseNo);
 
@@ -27,5 +26,8 @@ public interface PurchaseOrderService {
 
 //    List<PurchaseOrder>
     //PurchaseOrder getPurchaseOrderByPurchaseId(String purchaseId);
+
+    List<PurchaseOrder> getOrderByStatus();
+
 
 }

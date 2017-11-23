@@ -64,9 +64,7 @@ public class Supplier implements Serializable {
     @Column(name = "personNo")
     private Integer personNo;
 
-
     @OneToMany(mappedBy = "supplierNo")
-//    @JsonBackReference
     private List<PurchaseOrder> purchaseOrderList;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "supplier")
@@ -142,7 +140,7 @@ public class Supplier implements Serializable {
         this.purchaseOrderList = purchaseOrderList;
     }
 
-    @XmlTransient
+    //@XmlTransient
     public List<SupplierItem> getSupplierItemList() {
         return supplierItemList;
     }
