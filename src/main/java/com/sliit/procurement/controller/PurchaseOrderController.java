@@ -44,11 +44,12 @@ public class PurchaseOrderController {
         return new ResponseEntity<PurchaseOrder>(purchaseOrder, HttpStatus.CREATED);
     }
 
-//    @ResponseBody
-//    @RequestMapping(value = "/purchaseOrders", method = RequestMethod.PUT)
-//    public PurchaseOrder updatePurchaseOrder(@RequestBody final PurchaseOrder purchaseOrder) {
-//        return purchaseOrderService.updatePurchaseOrder(purchaseOrder);
-//    }
+    @ResponseBody
+    @RequestMapping(value = "/purchaseOrders", method = RequestMethod.PUT)
+    public PurchaseOrder updatePurchaseOrder(@RequestBody final PurchaseOrder purchaseOrder) {
+        return purchaseOrderService.updatePurchaseOrder(purchaseOrder);
+    }
+
 
 //    @ResponseBody
 //    @RequestMapping(value = "/purchaseOrders/{purchaseId}", method = RequestMethod.GET)
