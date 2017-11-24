@@ -108,7 +108,7 @@ public class SupplierItem implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.mvndb.SupplierItem[ supplierItemPK=" + supplierItemPK + " ]";
+        return "com.mycompany.mvndb.SupplierItemService[ supplierItemPK=" + supplierItemPK + " ]";
     }
     
 }
