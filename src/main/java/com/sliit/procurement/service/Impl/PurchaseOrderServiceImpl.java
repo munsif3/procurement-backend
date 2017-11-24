@@ -32,7 +32,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
     }
 
     @Override
-    public  PurchaseOrder  updatePurchaseOrder(PurchaseOrder purchaseOrder){
+    public  PurchaseOrder updatePurchaseOrder(PurchaseOrder purchaseOrder){
         return purchaseOrderRepository.save(purchaseOrder);
     }
 
