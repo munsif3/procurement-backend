@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -43,11 +44,11 @@ public class PurchaseOrderController {
         return new ResponseEntity<PurchaseOrder>(purchaseOrder, HttpStatus.CREATED);
     }
 
-    @ResponseBody
-    @RequestMapping(value = "/purchaseOrders", method = RequestMethod.PUT)
-    public PurchaseOrder updatePurchaseOrder(@RequestBody final PurchaseOrder purchaseOrder) {
-        return purchaseOrderService.updatePurchaseOrder(purchaseOrder);
-    }
+//    @ResponseBody
+//    @RequestMapping(value = "/purchaseOrders", method = RequestMethod.PUT)
+//    public PurchaseOrder updatePurchaseOrder(@RequestBody final PurchaseOrder purchaseOrder) {
+//        return purchaseOrderService.updatePurchaseOrder(purchaseOrder);
+//    }
 
 //    @ResponseBody
 //    @RequestMapping(value = "/purchaseOrders/{purchaseId}", method = RequestMethod.GET)
@@ -83,4 +84,31 @@ public class PurchaseOrderController {
     public PurchaseOrder getPurchaseOrderByPurchaseNo(@PathVariable("purchaseId") String purchaseId){
         return purchaseOrderService.getPurchaseOrderByPurchaseId(purchaseId);
     }
+
+//
+//    @PutMapping("/purchaseOrders")
+//    public ResponseEntity<PurchaseOrder>updatePurchaseOrder(@Valid @RequestBody PurchaseOrder purchaseOrder) {
+//        PurchaseOrder purchaseOrderOld = purchaseOrderService.getPurchaseOrderByPurchaseNo((purchaseOrder.getPurchaseNo()));
+//        Date currentDate = new Date();
+//        if(purchaseOrder.getPurchaseId()!=null){
+//            purchaseOrderOld.setPurchaseId(purchaseOrder.getPurchaseId());
+//        }
+//        if(purchaseOrder.getRequestedBy()!=null){
+//            purchaseOrderOld.setRequestedBy(purchaseOrder.getRequestedBy());
+//        }
+//        if(purchaseOrder.getPreparedDate().equals(currentDate)){
+//            purchaseOrderOld.setPreparedDate(purchaseOrder.getPreparedDate());
+//        }
+//        if(purchaseOrder.getPreparedBy().getEmployeeId()!=null){
+//            purchaseOrderOld.setPreparedBy(purchaseOrder.getPreparedBy());
+//        }
+//        if(purchaseOrder.getStatus()!=null){
+//            purchaseOrderOld.setStatus(purchaseOrder.getStatus());
+//        }
+//        if(purchaseOrder.getTotalAmount()!=null){
+//            purchaseOrderOld.setTotalAmount(purchaseOrder.getTotalAmount());
+//        }
+//        purchaseOrderOld=purchaseOrderService.addPurchaseOrder(purchaseOrder);
+//        return new ResponseEntity<PurchaseOrder>(purchaseOrderOld,HttpStatus.CREATED);
+//    }
 }
