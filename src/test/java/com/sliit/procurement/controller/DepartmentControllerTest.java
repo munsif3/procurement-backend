@@ -1,4 +1,4 @@
-package com.sliit;
+package com.sliit.procurement.controller;
 
 import static org.junit.Assert.*;
 
@@ -16,11 +16,10 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-import com.sliit.procurement.controller.DepartmentController;
 import com.sliit.procurement.model.Department;
 import com.sliit.procurement.service.DepartmentService;
+
 @RunWith(SpringRunner.class)
 @WebMvcTest(value = DepartmentController.class, secure = false)
 public class DepartmentControllerTest {
@@ -30,21 +29,18 @@ public class DepartmentControllerTest {
 
 	@MockBean
 	private DepartmentService departmentService;
-	
-	
-	public void testListAllUsers()throws Exception {
-		
+
+	public void testListAllUsers() throws Exception {
+
 	}
 
-	
 	@Test
-	public void createDepartment()throws Exception {
+	public void createDepartment() throws Exception {
 		Department department = new Department();
 		department.setDepartmentName("eagOLD");
-		Mockito.when(
-				departmentService.saveDepartment(Mockito.any(Department.class))).thenReturn(department);
-		RequestBuilder requestBuilder = MockMvcRequestBuilders
-				.post("/api/department")
+		
+		Mockito.when(departmentService.saveDepartment(Mockito.any(Department.class))).thenReturn(department);
+		RequestBuilder requestBuilder = MockMvcRequestBuilders.post("/api/department")
 				.accept(MediaType.APPLICATION_JSON).content("{\"departmentName\": \"eagOLD\"}")
 				.contentType(MediaType.APPLICATION_JSON);
 		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
@@ -54,7 +50,6 @@ public class DepartmentControllerTest {
 		assertEquals(HttpStatus.CREATED.value(), response.getStatus());
 	}
 
-	
 	public void testUpdateDepartment() {
 		fail("Not yet implemented");
 	}
