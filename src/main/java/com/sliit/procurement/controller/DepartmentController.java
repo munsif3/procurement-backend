@@ -38,7 +38,7 @@ public class DepartmentController {
     }
 	
 	@PostMapping("/department")
-	 public ResponseEntity<Department>createNote(@Valid @RequestBody Department department) {
+	 public ResponseEntity<Department>createDepartment(@Valid @RequestBody Department department) {
 		 department= departmentService.saveDepartment(department);
 		 department.setDepartmentId("DEP" + String.format("%03d", department.getDepartmentNo()));
 		 department=departmentService.saveDepartment(department);
